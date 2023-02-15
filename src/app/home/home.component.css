@@ -1,0 +1,10 @@
+.home-bg
+{
+    height: 100%;
+    background-image: url("../../assets/images/bg-1.jpg");
+    background-size: 100%;
+    background-size: cover;
+    /* position: absolute; */
+}
+
+img{height: 475px;}
