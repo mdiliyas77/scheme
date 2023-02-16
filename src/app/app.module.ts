@@ -13,6 +13,9 @@ import { AllschemesComponent } from './allschemes/allschemes.component';
 import { MyschemesComponent } from './myschemes/myschemes.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { AppheaderComponent } from './appheader/appheader.component';
+import { AddschemeComponent } from './addscheme/addscheme.component';
+import { ViewmembersComponent } from './viewmembers/viewmembers.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { ContactusComponent } from './contactus/contactus.component';
     AllschemesComponent,
     MyschemesComponent,
     AboutusComponent,
-    ContactusComponent
+    ContactusComponent,
+    AppheaderComponent,
+    AddschemeComponent,
+    ViewmembersComponent
   ],
   imports: [
     BrowserModule,
