@@ -9,6 +9,10 @@ import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { MemberloginComponent } from './memberlogin/memberlogin.component';
 import { MemberdashboardComponent } from './memberdashboard/memberdashboard.component';
+import { AllschemesComponent } from './allschemes/allschemes.component';
+import { MyschemesComponent } from './myschemes/myschemes.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { MemberdashboardComponent } from './memberdashboard/memberdashboard.comp
     AdminloginComponent,
     AdmindashboardComponent,
     MemberloginComponent,
-    MemberdashboardComponent
+    MemberdashboardComponent,
+    AllschemesComponent,
+    MyschemesComponent,
+    AboutusComponent,
+    ContactusComponent
   ],
   imports: [
     BrowserModule,
