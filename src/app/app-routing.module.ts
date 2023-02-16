@@ -14,24 +14,6 @@ import { ViewmembersComponent } from './viewmembers/viewmembers.component';
 
 const routes: Routes = [
 
-  {path:'',component:HomeComponent},
-  {path:'adminlogin',component:AdminloginComponent},
-  {path:'memberlogin',component:MemberloginComponent},
-  {path:'admindashboard',component:AdmindashboardComponent,
-children:[
-  {path:'addscheme',component:AddschemeComponent},
-  {path:'viewmembers',component:ViewmembersComponent},
-]
-},
-  {path:'memberdashboard',component:MemberdashboardComponent,
-  children:[
-    {path:'myschemes',component:MyschemesComponent},
-    {path:'allschemes',component:AllschemesComponent},
-  ]
-},
-  {path:'allschemes',component:AllschemesComponent},
-  {path:'contactus',component:ContactusComponent},
-  {path:'aboutus',component:AboutusComponent}
 
 ];
 
