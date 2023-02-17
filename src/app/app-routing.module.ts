@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { AddschemeComponent } from './addscheme/addscheme.component';
+import { AddtypesComponent } from './addtypes/addtypes.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AllschemesComponent } from './allschemes/allschemes.component';
@@ -16,7 +17,13 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'adminlogin', component: AdminloginComponent },
   { path: 'memberlogin', component: MemberloginComponent },
-  { path: 'admindashboard', component: AdmindashboardComponent },
+  { path: 'admindashboard', component: AdmindashboardComponent,
+  children:[
+    { path: 'addtypes', component: AddtypesComponent },
+    {path:'addscheme',component:AddschemeComponent},
+    {path:'viewmembers',component:ViewmembersComponent},
+  ]
+},
   { path: 'memberdashboard', component: MemberdashboardComponent,
     children: [
       { path: 'myschemes', component: MyschemesComponent },
@@ -25,7 +32,8 @@ const routes: Routes = [
   },
   { path: 'allschemes', component: AllschemesComponent },
   { path: 'contactus', component: ContactusComponent },
-  { path: 'aboutus', component: AboutusComponent }
+  { path: 'aboutus', component: AboutusComponent },
+  
  
 
 ];
