@@ -1,15 +1,21 @@
-<div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" routerLink="addscheme">Add Schemes</a>
-                    <a class="nav-link" routerLink="viewmembers">View Members</a>
-                    <a class="nav-link" href="">Logout</a>
+<div class="container-fluid" *ngIf="model.userid!=null else elseblock">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" routerLink="addtypes">Add Types</a>
+                        <a class="nav-link" routerLink="addscheme">Add Schemes</a>
+                        <a class="nav-link" routerLink="viewmembers">View Members</a>
+                        <a class="nav-link" (click)="logout()">Logout</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-    <router-outlet></router-outlet>
+        </nav>
+        <br>
+        <br>
+        <router-outlet></router-outlet>
+    </div>
 </div>
+<ng-template #elseblock>Please login to view page</ng-template>

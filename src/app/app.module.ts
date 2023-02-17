@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { AppheaderComponent } from './appheader/appheader.component';
 import { AddschemeComponent } from './addscheme/addscheme.component';
 import { ViewmembersComponent } from './viewmembers/viewmembers.component';
+import { AddtypesComponent } from './addtypes/addtypes.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,16 @@ import { ViewmembersComponent } from './viewmembers/viewmembers.component';
     ContactusComponent,
     AppheaderComponent,
     AddschemeComponent,
-    ViewmembersComponent
+    ViewmembersComponent,
+    AddtypesComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

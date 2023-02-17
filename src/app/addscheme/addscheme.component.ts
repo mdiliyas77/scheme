@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SchemeService } from '../scheme.service';
 
 @Component({
   selector: 'app-addscheme',
@@ -7,8 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddschemeComponent implements OnInit {
 
-  constructor() { }
+  usertypelist:any=[];
+  model:any={};
+  flag:boolean=true;
+  errormessage:string="";
+
+  constructor(private schemeservice:SchemeService, private router:Router) { }
 
   ngOnInit(): void {
+    this.GetType();
+  }
+
+  GetType()
+  {
+    debugger;
+    this.schemeservice.GetUserType()
+    .subscribe({
+      next:(data)=>
+      {
+        this.usertypelist = data as any[];
+      }
+    })
+  }
+
+  OnSubmit()
+  {
+    
   }
 }

@@ -1,0 +1,31 @@
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            Add Types
+                        </h5>
+                    </div>
+                    
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Enter Type of Scheme:</label>
+                                <input type="text" class="form-control" [(ngModel)]="model.usertype">
+                                <P>{{model.usertype}}</P>
+                            </div>
+                            
+                        </div>
+                        <div class="card-footer">
+                            <div class="form-group">
+                                <button class="btn btn-primary float-end " (click)="Submit()">Submit</button>
+                            </div>
+                            <h3 [style.color]="flag?'green':'red'">{{statusmsg}}</h3>
+                        </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
