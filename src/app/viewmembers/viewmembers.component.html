@@ -1,1 +1,38 @@
-<p>viewmembers works!</p>
+<div class="contanier-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h5>All Members</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Member ID</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Member Name</th>
+                    <th scope="col">User Type</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Aadhaar No.</th>
+                    <th scope="col">Mobile No.</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let mlist of memberlist">
+                    <td>{{mlist.memberid}}</td>
+                    <td>{{mlist.password}}</td>
+                    <td>{{mlist.name}}</td>
+                    <td>{{mlist.usertype}}</td>
+                    <td>{{mlist.address}}</td>
+                    <td>{{mlist.aadhaarno}}</td>
+                    <td>{{mlist.phoneno}}</td>
+                    <td><a class="btn btn-primary" (click)="Edit(mlist)">Edit</a> </td>
+                    <td><a class="btn btn-primary" (click)="Delete(mlist)">Delete</a> </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+<p>{{statusmsg}}</p>

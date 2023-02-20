@@ -30,6 +30,7 @@ export class AdminloginComponent implements OnInit {
         if(data.Status=="Success")
         {
           this.router.navigate(['/admindashboard']);
+          setTimeout(()=> {alert("Logged In Successfully")},300);
         }
         else
         {

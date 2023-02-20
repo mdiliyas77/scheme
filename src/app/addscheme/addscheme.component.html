@@ -1,49 +1,127 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-10 offset-lg-1 mt-5">
             <div class="card">
-            <div class="card-heading">
-              <h6 class="card-title bg-primary py-2 text-white">
-              Add Scheme
-              </h6>
-             
-             </div>
-             <form  class="emp-form" #cropForm="ngForm" >
-                          <div class="card-body">
-                              <div class="form-row">  
-                          
-                          <div class="form-group">
-                              <label>Select User Type:</label>
-                              <select [(ngModel)]="model.usertypeid" class="form-select" name="city">
-                                  <option *ngFor="let items of usertypelist" [value]="items.usertypeid">{{items.usertype}}</option>
-                              </select>
-                          </div>
-          
-                          <div class="form-group">
-                              <label>Enter Area Name</label>
-                              <input type="text" class="form-control" name="apmcname" [(ngModel)]="model.areaname" required/>
-          
-                          </div>
-                          <div>
-          
-                          </div>
-                      </div>
-                  </div>
-           
-                  <div class="card-footer">
-                      <div class="form-row py-4">
-                          <div class="form-group ">
-                              <button type="submit" class="btn btn-primary float-end"
-                                  (click)="OnSubmit()">Add Area</button>
-                          </div>
-                          <br>
-                          <div class="form-group">
-                              <h2 [style.color]="flag?'green':'red'">{{errormessage}}</h2>
-                          </div>
-                      </div>
-                  </div>
-              </form>
-          </div>
-          </div>
+                <div class="card-header bg-primary text-white">
+                    <h6>
+                        Add Scheme
+                    </h6>
+
+                </div>
+                <!-- <form  class="emp-form" #cropForm="ngForm" > -->
+                <div class="card-body">
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label class="form-label">Select Scheme Type:</label>
+                            <select [(ngModel)]="model.schemetype" class="form-select" name="city">
+                                <option *ngFor="let items of usertypelist" [value]="items.usertype">{{items.usertype}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Enter Scheme Title:</label>
+                            <input type="text" class="form-control" name="schemetitle" [(ngModel)]="model.schemetitle"
+                                required />
+
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Enter Scheme Description:</label>
+                            <textarea class="form-control" name="schemedescription"
+                                [(ngModel)]="model.schemedesc"></textarea>
+
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="form-row py-2">
+                        <div class="form-group ">
+                            <button type="submit" class="btn btn-primary float-end" (click)="OnSubmit()">Add
+                                Scheme</button>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <h2 [style.color]="flag?'green':'red'">{{errormessage}}</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- </form> -->
+            </div>
+        </div>
+        <div class="col-lg-10 offset-lg-1 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        Added Schemes
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Scheme ID</th>
+                                <th scope="col">Scheme Type</th>
+                                <th scope="col">Scheme Title</th>
+                                <th scope="col">Scheme Description</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let slist of allschemelist">
+                                <td>{{slist.schemeid}}</td>
+                                <td>{{slist.schemetype}}</td>
+                                <td>{{slist.schemetitle}}</td>
+                                <td><textarea class="form-control" readonly>{{slist.schemedesc}}</textarea></td>
+                                <td><a class="btn btn-primary" (click)="Edit(slist)">Edit</a> </td>
+                                <td><a class="btn btn-primary" (click)="Delete(slist)">Delete</a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<div class="container my-5">
+
+    <div class="search-hero">
+        <input class="form-control w-25" type="text" name="search" [(ngModel)]="searchtext" autocomplete="off" placeholder="Search">
+      </div>
+    <div class="card my-5" *ngFor="let slist of allschemelist | filter:searchtext">
+        <!-- <div class="card-body">
+        <div class="form-group">
+            <h6 class="card-title">Scheme Id</h6>
+            <div class="card-text">{{slist.schemeid}}</div>
+        </div>
+        </div> -->
+        <div class="card-body">
+            <div class="form-group">
+                <!-- <h6 class="card-title d-inline">Scheme Title:</h6> -->
+                <h3 class="card-text d-inline text-danger">{{slist.schemetitle}}</h3>
+            </div>
+            </div>
+        <div class="card-body">
+        <div class="form-group">
+            <h6 class="card-title d-inline">Scheme For:</h6>
+            <div class="card-text d-inline mx-1">{{slist.schemetype}}</div>
+        </div>
+    </div>
+        <div class="card-body">
+        <div class="form-group">
+            <h6 class="card-title d-inline text-justify">Scheme Description:</h6>
+            <div class="text-break card-text  mx-1 d-inline">{{slist.schemedesc}}</div>
+        </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <a href="" class="btn btn-primary">Apply</a>
+            </div>
+    </div>
+    </div>

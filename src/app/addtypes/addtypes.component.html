@@ -13,7 +13,6 @@
                             <div class="form-group">
                                 <label class="form-label">Enter Type of Scheme:</label>
                                 <input type="text" class="form-control" [(ngModel)]="model.usertype">
-                                <P>{{model.usertype}}</P>
                             </div>
                             
                         </div>
@@ -26,6 +25,34 @@
                   
                 </div>
             </div>
+
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            Added Types
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">Scheme Type ID</th>
+                                <th scope="col">Scheme Type</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let type of schemes">
+                                <td>{{type.usertypeid}}</td>
+                                <td>{{type.usertype}}</td>
+                                <td><a class="btn btn-primary" (click)="Edit(type)">Edit</a> </td>
+                                <td><a class="btn btn-primary" (click)="Delete(type)">Delete</a> </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
         </div>
     </div>
 </div>
