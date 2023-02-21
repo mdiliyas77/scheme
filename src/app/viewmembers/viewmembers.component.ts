@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Scheme } from '../scheme';
 import { SchemeService } from '../scheme.service';
 
@@ -12,11 +13,15 @@ export class ViewmembersComponent implements OnInit {
   model:any={};
   memberlist:any=[];
   statusmsg:string="";
+  flag:boolean=false;
+  hide:boolean=false;
+  usertypelist: any = [];
 
-  constructor(private schemeservice:SchemeService) { }
+  constructor(private schemeservice:SchemeService,private router:Router) { }
 
   ngOnInit(): void {
     this.GetMember();
+    this.GetType();
   }
 
   GetMember()
@@ -30,9 +35,12 @@ export class ViewmembersComponent implements OnInit {
     })
   }
 
-  Edit(mlist:Scheme)
+  Showdata(mlist:Scheme)
   {
-    this.model = Object.assign({},mlist)
+    debugger;
+    this.model = Object.assign({},mlist);
+    this.hide =!this.hide;
+    
   }
 
   Delete(mlist:Scheme)
@@ -59,5 +67,31 @@ export class ViewmembersComponent implements OnInit {
     this.model.aadhaarno="";
     this.model.phoneno="";
     this.model.address="";
+  }
+
+  GetType() {
+    debugger;
+    this.schemeservice.GetUserType()
+      .subscribe({
+        next: (data) => {
+          this.usertypelist = data as any[];
+        }
+      })
+  }
+
+  Edit() {
+    debugger;
+    this.schemeservice.EditMember(this.model)
+    .subscribe({
+      next:(data)=>
+      {
+        data.Status=="Success"?this.flag=true:this.flag=false;
+        this.statusmsg = data.Message;
+        this.hide=false;
+        this.ClearAll();
+        this.GetMember();
+        setTimeout(()=>{this.statusmsg=""},3000)
+      }
+    })
   }
 }

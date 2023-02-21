@@ -9,4 +9,14 @@ export class Scheme {
     schemetype:string="";
     schemetitle:string="";
     schemedesc:string="";
+
+    reply:string="";
+    givenreply:string="";
+    query:string="";
+    queryid:number=0;
+
+    phoneno:number=0;
+    aadhaarno:number=0;
+    address:string="";
+    name:string="";
 }

@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header bg-info">
+            <div class="card-title">All Queries</div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Query ID</th>
+                        <th scope="col">Scheme ID</th>
+                        <th scope="col">Scheme Title</th>
+                        <th scope="col">Member Name</th>
+                        <th scope="col">Query</th>
+                        <th scope="col">Reply</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let qlist of querylist">
+                        <td>{{qlist.queryid}}</td>
+                        <td>{{qlist.schemeid}}</td>
+                        <td>{{qlist.schemetitle}}</td>
+                        <td>{{qlist.name}}</td>
+                        <td><textarea class="form-control" readonly>{{qlist.query}}</textarea></td>
+                        <td><textarea class="form-control" readonly>{{qlist.reply}}</textarea></td>
+                        <td><a class="btn btn-primary" (click)="Reply(qlist)">Reply</a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-6 my-5" *ngIf="hide">
+        <div class="card">
+            <div class="card-header bg-info">
+                <div class="card-title">Give Reply</div>
+            </div>
+        <div class="card-body">
+      
+        <div class="form-group">
+          <label for="formGroupExampleInput" class="form-label">Query ID</label>
+          <input type="text" class="form-control" id="queryid" [(ngModel)]="model.queryid" disabled >
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2" class="form-label">Another label</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" [(ngModel)]="model.reply" placeholder="Reply Here">
+        </div>
+  
+    </div>
+      <div class="card-footer">
+        <button class="btn btn-primary float-end" (click)="GReply()">Submit Reply</button>
+        <h2 [style.color]="flag?'green':'red'">{{statusmsg}}</h2>
+    </div>
+    
+</div>
+</div>
+</div>

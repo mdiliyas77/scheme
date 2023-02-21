@@ -7,11 +7,13 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AllschemesComponent } from './allschemes/allschemes.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { EditmemberComponent } from './editmember/editmember.component';
 import { HomeComponent } from './home/home.component';
 import { MemberdashboardComponent } from './memberdashboard/memberdashboard.component';
 import { MemberloginComponent } from './memberlogin/memberlogin.component';
 import { MyschemesComponent } from './myschemes/myschemes.component';
 import { ViewmembersComponent } from './viewmembers/viewmembers.component';
+import { ViewqueryComponent } from './viewquery/viewquery.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +23,12 @@ const routes: Routes = [
   children:[
     { path: 'addtypes', component: AddtypesComponent },
     {path:'addscheme',component:AddschemeComponent},
-    {path:'viewmembers',component:ViewmembersComponent},
+    {path:'viewquery',component:ViewqueryComponent},
+    {path:'viewmembers',component:ViewmembersComponent,
+  children:[
+    {path:'editmember',component:EditmemberComponent}
+  ]
+},
   ]
 },
   { path: 'memberdashboard', component: MemberdashboardComponent,

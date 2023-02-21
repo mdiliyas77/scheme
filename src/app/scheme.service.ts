@@ -70,4 +70,19 @@ export class SchemeService {
   {
     return this.http.post(baseurl+'/DeleteMember',data);
   }
+
+  GetAllQuery():Observable<Scheme[]>
+  {
+    return this.http.get<Scheme[]>(baseurl+'/GetAllQuery');
+  }
+
+  GiveReply(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/GiveReply',data);
+  }
+
+  memberlogin(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/GiveReply',data);
+  }
 }

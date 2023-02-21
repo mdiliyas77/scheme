@@ -19,6 +19,8 @@ import { AppheaderComponent } from './appheader/appheader.component';
 import { AddschemeComponent } from './addscheme/addscheme.component';
 import { ViewmembersComponent } from './viewmembers/viewmembers.component';
 import { AddtypesComponent } from './addtypes/addtypes.component';
+import { EditmemberComponent } from './editmember/editmember.component';
+import { ViewqueryComponent } from './viewquery/viewquery.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { AddtypesComponent } from './addtypes/addtypes.component';
     AddschemeComponent,
     ViewmembersComponent,
     AddtypesComponent,
+    EditmemberComponent,
+    ViewqueryComponent,
     
   ],
   imports: [
