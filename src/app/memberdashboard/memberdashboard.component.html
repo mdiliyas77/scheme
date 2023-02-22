@@ -1,1 +1,7 @@
-<p>memberdashboard works!</p>
+<div *ngIf="model.memberid!=null else elseblock">
+<app-memberheader></app-memberheader>
+<router-outlet></router-outlet>
+</div>
+<ng-template #elseblock>
+    <p>Please Login to view Member Dashboard</p>
+</ng-template>

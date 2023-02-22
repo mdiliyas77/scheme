@@ -81,8 +81,9 @@ export class SchemeService {
     return this.http.post(baseurl+'/GiveReply',data);
   }
 
-  memberlogin(data:any):Observable<any>
+  RegisterMember(data:any):Observable<any>
   {
-    return this.http.post(baseurl+'/GiveReply',data);
+    return this.http.post(baseurl+'/MemberRegister',data);
   }
+
 }

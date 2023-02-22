@@ -46,6 +46,7 @@ export class ViewmembersComponent implements OnInit {
   Delete(mlist:Scheme)
   {
     this.model = Object.assign({},mlist)
+    if(confirm("Are you sure?")){
     this.schemeservice.DeleteMember(this.model)
     .subscribe({
       next:(data)=>
@@ -55,6 +56,7 @@ export class ViewmembersComponent implements OnInit {
       this.GetMember();
     }
     })
+  }
   }
 
   ClearAll()

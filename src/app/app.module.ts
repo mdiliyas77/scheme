@@ -21,6 +21,14 @@ import { ViewmembersComponent } from './viewmembers/viewmembers.component';
 import { AddtypesComponent } from './addtypes/addtypes.component';
 import { EditmemberComponent } from './editmember/editmember.component';
 import { ViewqueryComponent } from './viewquery/viewquery.component';
+import { RegistermemberComponent } from './registermember/registermember.component';
+import { MemberheaderComponent } from './memberheader/memberheader.component';
+import { MemberschemesComponent } from './memberschemes/memberschemes.component';
+import { MatchingschemesComponent } from './matchingschemes/matchingschemes.component';
+import { MyapplicationComponent } from './myapplication/myapplication.component';
+import { AllapplicationsComponent } from './allapplications/allapplications.component';
+import { ViewmyqueryComponent } from './viewmyquery/viewmyquery.component';
+import { AddcasteComponent } from './addcaste/addcaste.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +48,14 @@ import { ViewqueryComponent } from './viewquery/viewquery.component';
     AddtypesComponent,
     EditmemberComponent,
     ViewqueryComponent,
+    RegistermemberComponent,
+    MemberheaderComponent,
+    MemberschemesComponent,
+    MatchingschemesComponent,
+    MyapplicationComponent,
+    AllapplicationsComponent,
+    ViewmyqueryComponent,
+    AddcasteComponent,
     
   ],
   imports: [

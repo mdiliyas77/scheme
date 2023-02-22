@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberdashboardComponent implements OnInit {
 
+  model:any={};
+
   constructor() { }
 
   ngOnInit(): void {
+    this.model.memberid = sessionStorage.getItem('userid')
   }
 
 }

@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { SchemeService } from '../scheme.service';
 
 @Component({
-  selector: 'app-allschemes',
-  templateUrl: './allschemes.component.html',
-  styleUrls: ['./allschemes.component.css']
+  selector: 'app-memberschemes',
+  templateUrl: './memberschemes.component.html',
+  styleUrls: ['./memberschemes.component.css']
 })
-export class AllschemesComponent implements OnInit {
+export class MemberschemesComponent implements OnInit {
 
   searchtext:string="";
   allschemelist:any=[];
+
   constructor(private schemeservice:SchemeService) { }
 
   ngOnInit(): void {
@@ -24,4 +25,5 @@ export class AllschemesComponent implements OnInit {
         }
       })
 }
+
 }

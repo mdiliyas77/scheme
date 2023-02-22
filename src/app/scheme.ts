@@ -19,4 +19,5 @@ export class Scheme {
     aadhaarno:number=0;
     address:string="";
     name:string="";
+    docs:string="";
 }
