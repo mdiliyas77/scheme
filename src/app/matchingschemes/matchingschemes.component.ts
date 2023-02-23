@@ -9,21 +9,44 @@ import { SchemeService } from '../scheme.service';
 export class MatchingschemesComponent implements OnInit {
 
   searchtext:string="";
-  allschemelist:any=[];
+  myschemelist:any=[];
+  memberlist:any=[];
+  model:any={};
+  statusmsg:string=""
+  flag:boolean=true;
+  hide:boolean=true;
 
   constructor(private schemeservice:SchemeService) { }
 
   ngOnInit(): void {
-    this.GetAllScheme();
+    this.GetMemberById();
+    this.GetMyScheme();
   }
 
-  GetAllScheme() {
-    this.schemeservice.GetAllSchemes()
+  GetMemberById()
+  {
+    debugger;
+    this.model.memberid = sessionStorage.getItem('userid');
+    this.schemeservice.GetMemberbyId(this.model)
       .subscribe({
         next: (data) => {
-          this.allschemelist = data as any[];
+          this.memberlist = data as any[];
         }
       })
+  }
+
+  GetMyScheme() {
+    this.model.memberid = sessionStorage.getItem('userid');
+    this.schemeservice.GetMyScheme(this.model)
+      .subscribe({
+        next: (data) => {
+          this.myschemelist = data as any[];
+        }
+      })
+}
+Edit()
+{
+
 }
 
 }

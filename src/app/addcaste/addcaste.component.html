@@ -8,21 +8,21 @@
                             Add Caste
                         </h5>
                     </div>
-                    
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label class="form-label">Enter Type of Scheme:</label>
-                                <input type="text" class="form-control" [(ngModel)]="model.caste">
-                            </div>
-                            
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Enter Type of Scheme:</label>
+                            <input type="text" class="form-control" [(ngModel)]="model.caste">
                         </div>
-                        <div class="card-footer">
-                            <div class="form-group">
-                                <button class="btn btn-primary float-end " (click)="Submit()">Submit</button>
-                            </div>
-                            <h3 [style.color]="flag?'green':'red'">{{statusmsg}}</h3>
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="form-group">
+                            <button class="btn btn-primary float-end " (click)="Submit()">Submit</button>
                         </div>
-                  
+                        <h3 [style.color]="flag?'green':'red'">{{statusmsg}}</h3>
+                    </div>
+
                 </div>
             </div>
 
@@ -36,23 +36,25 @@
                     <div class="card-body">
                         <table class="table table-hover">
                             <thead>
-                              <tr>
-                                <th scope="col">Caste ID</th>
-                                <th scope="col">Caste Name</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                              </tr>
+                                <tr>
+                                    <th scope="col">Caste ID</th>
+                                    <th scope="col">Caste Name</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="let type of castes">
-                                <td>{{type.usertypeid}}</td>
-                                <td>{{type.usertype}}</td>
-                                <td><a class="btn btn-primary" (click)="Edit(type)">Edit</a> </td>
-                                <td><a class="btn btn-primary" (click)="Delete(type)">Delete</a> </td>
-                              </tr>
+                                <tr *ngFor="let type of castes">
+                                    <td>{{type.casteid}}</td>
+                                    <td>{{type.caste}}</td>
+                                    <td><a class="btn btn-primary" (click)="Edit(type)">Edit</a> </td>
+                                    <td><a class="btn btn-primary" (click)="Delete(type)">Delete</a> </td>
+                                </tr>
                             </tbody>
-                          </table>
+                        </table>
                     </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

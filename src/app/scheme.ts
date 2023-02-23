@@ -20,4 +20,11 @@ export class Scheme {
     address:string="";
     name:string="";
     docs:string="";
+
+    casteid:number=0;
+    caste:string="";
+
+    age:number=0;
+    maritialstatus:string="";
+    
 }

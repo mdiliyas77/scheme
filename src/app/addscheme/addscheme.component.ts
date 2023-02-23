@@ -17,12 +17,22 @@ export class AddschemeComponent implements OnInit {
   flag: boolean = true;
   errormessage: string = "";
   allschemelist: any = [];
+  castelist: any = [];
   searchtext:string="";
+
+  mstatus:any=[
+    {type:"single"},
+    {type:"married"},
+    {type:"window"},
+    {type:"divorced"},
+  ]
   constructor(private schemeservice: SchemeService, private router: Router) { }
 
   ngOnInit(): void {
     this.GetType();
+    this.GetCaste();
     this.GetAllScheme();
+
   }
 
   GetType() {
@@ -33,6 +43,16 @@ export class AddschemeComponent implements OnInit {
           this.usertypelist = data as any[];
         }
       })
+  }
+
+  GetCaste()
+  {
+    this.schemeservice.GetCaste()
+    .subscribe({
+      next:(data)=>{
+        this.castelist = data as any[];
+      }
+    })
   }
 
   OnSubmit() {
@@ -92,9 +112,12 @@ export class AddschemeComponent implements OnInit {
   Clear() {
     this.model.usertype = null;
     this.model.usertypeid = null;
-    this.model.schemeid = null;
+    this.model.age = null;
     this.model.schemetype = null;
     this.model.schemetitle = null;
     this.model.schemedesc = null;
+    this.model.docs = null;
+    this.model.caste = null;
+    this.model.maritialstatus = null;
   }
 }

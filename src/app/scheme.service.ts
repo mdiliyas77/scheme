@@ -86,4 +86,34 @@ export class SchemeService {
     return this.http.post(baseurl+'/MemberRegister',data);
   }
 
+  AddCaste(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/AddCastes',data)
+  }
+
+  GetCaste():Observable<Scheme[]>
+  {
+    return this.http.get<Scheme[]>(baseurl+'/GetCastes');
+  }
+
+  EditCaste(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/EditCastes',data);
+  }
+
+  DeleteCaste(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/DeleteCastes',data);
+  }
+
+  GetMyScheme(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/GetMySchemes',data);
+  }
+
+  GetMemberbyId(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/GetMemberbyId',data);
+  }
+
 }

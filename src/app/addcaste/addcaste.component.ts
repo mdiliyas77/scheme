@@ -16,35 +16,35 @@ export class AddcasteComponent implements OnInit {
   constructor(private schemeservice:SchemeService) { }
 
   ngOnInit(): void {
-    this.GetSchemeTypes();
+    this.GetCaste();
   }
 
   Submit()
   {
     debugger;
-    if (this.model.usertypeid==null)
+    if (this.model.casteid==null)
     {
-    this.schemeservice.AddTypes(this.model)
+    this.schemeservice.AddCaste(this.model)
     .subscribe({
       next:(data)=>
       {
         data.Status=="Error"?this.flag=false:this.flag=true;
         this.statusmsg = data.Message;
         this.Clear();
-        this.GetSchemeTypes();
+        this.GetCaste();
         setTimeout(() =>(this.statusmsg =""),3000);
       }
     })
   }
   else
   {
-    this.schemeservice.EditSchemeType(this.model)
+    this.schemeservice.EditCaste(this.model)
     .subscribe({
       next:(data)=>
       {
         this.statusmsg = data.Message;
         this.Clear();
-        this.GetSchemeTypes();
+        this.GetCaste();
         setTimeout(() =>(this.statusmsg =""),3000);
       }
     })
@@ -60,22 +60,22 @@ export class AddcasteComponent implements OnInit {
   Delete(type:Scheme)
   {
     this.model = Object.assign({},type);
-    this.schemeservice.DeleteSchemeType(this.model)
+    this.schemeservice.DeleteCaste(this.model)
     .subscribe({
       next:(data)=>
       {
         this.flag= false;
         this.statusmsg = data.Message;
         this.Clear();
-        this.GetSchemeTypes();
+        this.GetCaste();
         setTimeout(() =>(this.statusmsg =""),3000);
       }
     })
   }
 
-  GetSchemeTypes()
+  GetCaste()
   {
-    this.schemeservice.GetUserType()
+    this.schemeservice.GetCaste()
     .subscribe({
       next:(data)=>{
         this.castes = data as any[];
@@ -85,7 +85,7 @@ export class AddcasteComponent implements OnInit {
 
   Clear()
   {
-    this.model.usertypeid=null;
-    this.model.usertype=null;
+    this.model.casteid=null;
+    this.model.caste=null;
   }
 }
