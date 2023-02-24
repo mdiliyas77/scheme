@@ -59,6 +59,7 @@ export class AddtypesComponent implements OnInit {
 
   Delete(type:Scheme)
   {
+    if (confirm("Are you sure to delete it?")) {
     this.model = Object.assign({},type);
     this.schemeservice.DeleteSchemeType(this.model)
     .subscribe({
@@ -72,6 +73,7 @@ export class AddtypesComponent implements OnInit {
       }
     })
   }
+}
 
   GetSchemeTypes()
   {

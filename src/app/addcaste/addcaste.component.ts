@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup/public-api';
 import { Scheme } from '../scheme';
 import { SchemeService } from '../scheme.service';
 
@@ -14,6 +15,7 @@ export class AddcasteComponent implements OnInit {
   statusmsg:string="";
   castes:any=[];
   constructor(private schemeservice:SchemeService) { }
+  //private toast:NgToastService <---- Inject this to use toaster
 
   ngOnInit(): void {
     this.GetCaste();
@@ -59,6 +61,8 @@ export class AddcasteComponent implements OnInit {
 
   Delete(type:Scheme)
   {
+    if(confirm("Are you sure to Delete it?"))
+    {
     this.model = Object.assign({},type);
     this.schemeservice.DeleteCaste(this.model)
     .subscribe({
@@ -66,11 +70,13 @@ export class AddcasteComponent implements OnInit {
       {
         this.flag= false;
         this.statusmsg = data.Message;
+        // this.toast.success({detail:"Success",summary:data.Message,duration:5000});
         this.Clear();
         this.GetCaste();
         setTimeout(() =>(this.statusmsg =""),3000);
       }
     })
+  }
   }
 
   GetCaste()

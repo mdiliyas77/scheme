@@ -11,6 +11,9 @@
                     <th scope="col">Password</th>
                     <th scope="col">Member Name</th>
                     <th scope="col">User Type</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Caste</th>
+                    <th scope="col">Maritial Status</th>
                     <th scope="col">Address</th>
                     <th scope="col">Aadhaar No.</th>
                     <th scope="col">Mobile No.</th>
@@ -24,6 +27,9 @@
                     <td>{{mlist.password}}</td>
                     <td>{{mlist.name}}</td>
                     <td>{{mlist.usertype}}</td>
+                    <td>{{mlist.age}}</td>
+                    <td>{{mlist.caste}}</td>
+                    <td>{{mlist.maritialstatus}}</td>
                     <td>{{mlist.address}}</td>
                     <td>{{mlist.aadhaarno}}</td>
                     <td>{{mlist.phoneno}}</td>
@@ -55,16 +61,31 @@
     <label for="name" class="form-label">Name :</label>
     <input type="text" class="form-control" id="name" [(ngModel)]="model.name" placeholder="Enter Name">
   </div>
-  <!-- <div class="form-group">
-    <label for="typeid" class="form-label">User Type ID :</label>
-    <input type="text" class="form-control" id="usertypeid" [(ngModel)]="model.usertypeid" placeholder="Enter Type ID">
-  </div> -->
+  
   <div class="form-group">
     <label class="form-label">Select User Type:</label>
-    <select [(ngModel)]="model.usertypeid" class="form-select" name="city">
-        <option *ngFor="let items of usertypelist" [value]="items.usertypeid">{{items.usertype}}
+    <select [(ngModel)]="model.usertype" class="form-select" name="city">
+        <option *ngFor="let items of usertypelist" [value]="items.usertype">{{items.usertype}}
         </option>
     </select>
+</div>
+<div class="form-group">
+  <label class="form-label">Select Caste:</label>
+  <select [(ngModel)]="model.caste" class="form-select" name="caste">
+      <option *ngFor="let caste of castelist" [value]="caste.caste">{{caste.caste}}
+      </option>
+  </select>
+</div>
+<div class="form-group">
+  <label class="form-label">Select Maritial Status:</label>
+  <select [(ngModel)]="model.maritialstatus" class="form-select" name="maritialstatus">
+      <option *ngFor="let mlist of mstatus" [value]="mlist.type">{{mlist.type}}
+      </option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="age" class="form-label">Age :</label>
+  <input type="text" class="form-control" id="age" [(ngModel)]="model.age" placeholder="Enter Age">
 </div>
   <div class="form-group">
     <label for="address" class="form-label">Address :</label>
@@ -81,7 +102,7 @@
 
 </div>
 <div class="card-footer">
-  <button class="btn btn-primary float-end" (click)="Edit()">Submit Reply</button>
+  <button class="btn btn-primary float-end" (click)="Edit()">Update</button>
   <h2 [style.color]="flag?'green':'red'">{{statusmsg}}</h2>
 </div>
 

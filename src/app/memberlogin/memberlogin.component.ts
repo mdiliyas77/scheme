@@ -17,11 +17,20 @@ export class MemberloginComponent implements OnInit {
   usertypelist: any = [];
   flag:boolean=true;
   statusmsg:string="";
+  castelist: any = [];
+
+  mstatus:any=[
+    {type:"single"},
+    {type:"married"},
+    {type:"window"},
+    {type:"divorced"},
+  ]
 
   constructor(private service: SchemeService, private router: Router) { }
 
   ngOnInit(): void {
     this.GetType();
+    this.GetCaste();
   }
 
   changeid()
@@ -70,6 +79,16 @@ export class MemberloginComponent implements OnInit {
     }
   }
 
+  GetCaste()
+  {
+    this.service.GetCaste()
+    .subscribe({
+      next:(data)=>{
+        this.castelist = data as any[];
+      }
+    })
+  }
+
   Register() {
     debugger;
     this.signup = !this.signup;
@@ -109,6 +128,9 @@ export class MemberloginComponent implements OnInit {
         this.model.phoneno=""
         this.model.usertypeid=""
         this.model.usertype=""
+        this.model.age=""
+        this.model.caste=""
+        this.model.maritialstatus=""
 
       }
 }

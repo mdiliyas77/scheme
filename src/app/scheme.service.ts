@@ -71,16 +71,6 @@ export class SchemeService {
     return this.http.post(baseurl+'/DeleteMember',data);
   }
 
-  GetAllQuery():Observable<Scheme[]>
-  {
-    return this.http.get<Scheme[]>(baseurl+'/GetAllQuery');
-  }
-
-  GiveReply(data:any):Observable<any>
-  {
-    return this.http.post(baseurl+'/GiveReply',data);
-  }
-
   RegisterMember(data:any):Observable<any>
   {
     return this.http.post(baseurl+'/MemberRegister',data);
@@ -114,6 +104,45 @@ export class SchemeService {
   GetMemberbyId(data:any):Observable<any>
   {
     return this.http.post(baseurl+'/GetMemberbyId',data);
+  }
+
+  Apply(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/Apply',data);
+  }
+
+  GetAllApplication():Observable<Scheme[]>
+  {
+    return this.http.get<Scheme[]>(baseurl+'/GetAllApps');
+  }
+
+  GetApplicationById(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/GetApplicationById',data);
+  }
+
+  AddQuery(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/AddQuery',data);
+  }
+
+  GetAllQuery():Observable<Scheme[]>
+  {
+    return this.http.get<Scheme[]>(baseurl+'/GetAllQuery');
+  }
+
+  GetQueryById(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/GetApplicationById',data);
+  }
+
+  GiveReply(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/GiveReply',data);
+  }
+  AppAction(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/ActionOnApp',data);
   }
 
 }

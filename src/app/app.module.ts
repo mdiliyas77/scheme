@@ -29,6 +29,7 @@ import { MyapplicationComponent } from './myapplication/myapplication.component'
 import { AllapplicationsComponent } from './allapplications/allapplications.component';
 import { ViewmyqueryComponent } from './viewmyquery/viewmyquery.component';
 import { AddcasteComponent } from './addcaste/addcaste.component';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AddcasteComponent } from './addcaste/addcaste.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

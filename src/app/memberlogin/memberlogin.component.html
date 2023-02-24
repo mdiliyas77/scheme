@@ -49,38 +49,53 @@
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
+                    <input type="number" id="age" class="form-control form-control-lg" [(ngModel)]="model.age" />
+                    <label class="form-label" for="firstName">Age</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
                     <input type="text" id="lastName" class="form-control form-control-lg" [(ngModel)]="model.address" />
                     <label class="form-label" for="address">Address:</label>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 mb-4 d-flex align-items-center">
+              <div class="col-md-6 mb-4 d-flex align-items-center">
                   <div class="form-outline datepicker w-100">
-                    <input type="text" class="form-control form-control-lg" id="Aadhaar" [(ngModel)]="model.aadhaarno"/>
+                    <input type="number" class="form-control form-control-lg" id="Aadhaar" [(ngModel)]="model.aadhaarno"/>
                     <label for="Aadhaar" class="form-label">Aadhaar No.</label>
                   </div>
                 </div>
-              
                 <div class="col-md-6 mb-4 pb-2">
-
                   <div class="form-outline">
-                    <input type="tel" id="phoneNumber" class="form-control form-control-lg" [(ngModel)]="model.mobileno"/>
-                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                    <input type="number" id="phoneno" class="form-control form-control-lg" [(ngModel)]="model.phoneno"/>
+                    <label class="form-label" for="phoneno">Phone Number</label>
                   </div>
 
                 </div>
-              </div>
-              
-
-              <div class="row">
-                <div class="col-12">
-                  <label class="form-label">Choose option</label>
-                  <select class="form-select" [(ngModel)]="model.usertypeid">
-                    <option *ngFor="let items of usertypelist" [value]="items.usertypeid">{{items.usertype}}</option>
-                  </select>
+                <div class="col-md-6 mb-4 pb-2">
                   
-                
+                  <select class="form-select" [(ngModel)]="model.caste">
+                    <option *ngFor="let clist of castelist" [value]="clist.caste">{{clist.caste}}</option>
+                  </select>
+                  <label class="form-label">Choose Caste</label>
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+                  
+                  <select class="form-select" [(ngModel)]="model.maritialstatus">
+                    <option *ngFor="let mlist of mstatus" [value]="mlist.type">{{mlist.type}}</option>
+                  </select>
+                  <label class="form-label">Choose Naritial Status</label>
+                </div>
+              
+              
+                <div class="col-md-6 mb-4 pb-2">
+                  
+                  <select class="form-select" [(ngModel)]="model.usertype">
+                    <option *ngFor="let items of usertypelist" [value]="items.usertype">{{items.usertype}}</option>
+                  </select>
+                  <label class="form-label">Choose User Type</label>
                 </div>
               </div>
 

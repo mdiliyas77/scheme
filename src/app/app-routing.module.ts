@@ -35,7 +35,7 @@ children:[
     { path: 'addtypes', component: AddtypesComponent },
     {path:'addscheme',component:AddschemeComponent},
     {path:'viewallquery',component:ViewqueryComponent},
-    {path:'allapplication',component:AllapplicationsComponent},
+    {path:'allapplications',component:AllapplicationsComponent},
     {path:'addcaste',component:AddcasteComponent},
     {path:'viewmembers',component:ViewmembersComponent,
   children:[

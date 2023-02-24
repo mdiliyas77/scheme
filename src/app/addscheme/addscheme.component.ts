@@ -18,13 +18,13 @@ export class AddschemeComponent implements OnInit {
   errormessage: string = "";
   allschemelist: any = [];
   castelist: any = [];
-  searchtext:string="";
+  searchtext: string = "";
 
-  mstatus:any=[
-    {type:"single"},
-    {type:"married"},
-    {type:"window"},
-    {type:"divorced"},
+  mstatus: any = [
+    { type: "single" },
+    { type: "married" },
+    { type: "window" },
+    { type: "divorced" },
   ]
   constructor(private schemeservice: SchemeService, private router: Router) { }
 
@@ -45,14 +45,13 @@ export class AddschemeComponent implements OnInit {
       })
   }
 
-  GetCaste()
-  {
+  GetCaste() {
     this.schemeservice.GetCaste()
-    .subscribe({
-      next:(data)=>{
-        this.castelist = data as any[];
-      }
-    })
+      .subscribe({
+        next: (data) => {
+          this.castelist = data as any[];
+        }
+      })
   }
 
   OnSubmit() {
@@ -64,7 +63,7 @@ export class AddschemeComponent implements OnInit {
             this.errormessage = data.Message;
             this.Clear();
             this.GetAllScheme();
-            setTimeout(() =>(this.errormessage =""),3000);
+            setTimeout(() => (this.errormessage = ""), 3000);
           }
         })
     }
@@ -76,7 +75,7 @@ export class AddschemeComponent implements OnInit {
             this.errormessage = data.Message;
             this.Clear();
             this.GetAllScheme();
-            setTimeout(() =>(this.errormessage =""),3000);
+            setTimeout(() => (this.errormessage = ""), 3000);
           }
         })
     }
@@ -87,17 +86,19 @@ export class AddschemeComponent implements OnInit {
   }
 
   Delete(slist: Scheme) {
-    this.model = Object.assign({}, slist);
-    this.schemeservice.DeleteScheme(this.model)
-      .subscribe({
-        next: (data) => {
-          this.flag = false;
-          this.errormessage = data.Message;
-          this.Clear();
-          this.GetAllScheme();
-          setTimeout(() =>(this.errormessage =""),3000);
-        }
-      })
+    if (confirm("Are you sure to delete it?")) {
+      this.model = Object.assign({}, slist);
+      this.schemeservice.DeleteScheme(this.model)
+        .subscribe({
+          next: (data) => {
+            this.flag = false;
+            this.errormessage = data.Message;
+            this.Clear();
+            this.GetAllScheme();
+            setTimeout(() => (this.errormessage = ""), 3000);
+          }
+        })
+    }
   }
 
   GetAllScheme() {
@@ -119,5 +120,6 @@ export class AddschemeComponent implements OnInit {
     this.model.docs = null;
     this.model.caste = null;
     this.model.maritialstatus = null;
+    this.model.schemeid = null;
   }
 }

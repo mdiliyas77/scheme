@@ -36,8 +36,8 @@ export class ViewqueryComponent implements OnInit {
       this.schemeservice.GiveReply(this.model)
         .subscribe({
           next: (data) => {
-            data.Status == "Success" ? this.flag = true : this.flag = false;
-            this.statusmsg = data.Message;
+            alert(data.Message);
+            this.hide = false;
             this.ClearAll();
             this.getQuery();
           }

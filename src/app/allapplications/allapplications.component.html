@@ -1,1 +1,32 @@
-<p>allapplications works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Application ID</th>
+                        <th scope="col">Member ID</th>
+                        <th scope="col">Applicant Name</th>
+                        <th scope="col">Scheme ID</th>
+                        <th scope="col">Scheme Title</th>
+                        <th scope="col">Application Status</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let list of applist">
+                        <td>{{list.applicationid}}</td>
+                        <td>{{list.memberid}}</td>
+                        <td>{{list.name}}</td>
+                        <td>{{list.schemeid}}</td>
+                        <td>{{list.schemetitle}}</td>
+                        <td>{{list.appstatus}}</td>
+                        <td><a class="btn btn-primary" (click)="Approve(list)">Approve</a> </td>
+                        <td><a class="btn btn-primary" (click)="Reject(list)">Reject</a> </td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ export class Scheme {
     usertypeid:number=0;
     userid:string="";
     password:string="";
+    memberid:string="";
 
     schemeid:number=0;
     schemetype:string="";
@@ -26,5 +27,9 @@ export class Scheme {
 
     age:number=0;
     maritialstatus:string="";
+
+    condition:string="";
+    appstatus:string="";
+    applicationid:number=0;
     
 }

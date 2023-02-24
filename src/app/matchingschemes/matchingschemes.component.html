@@ -37,7 +37,7 @@
         <div class="card-body">
             <div class="form-group">
                 <h6 class="card-title d-inline">Maritial Status:</h6>
-                    <div class="card-text d-inline mx-1">{{slist.maritialstatus}}</div>
+                <div class="card-text d-inline mx-1">{{slist.maritialstatus}}</div>
             </div>
         </div>
         <div class="card-body">
@@ -48,58 +48,27 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-                <a href="" class="btn btn-primary">Apply</a>
-                <a href="" class="btn btn-primary ms-2">Ask Doubt</a>
+                <a class="btn btn-primary" (click)="Apply(slist)">Apply</a>
+                <a class="btn btn-primary ms-2" (click)="ShowData(slist)">Ask Doubt</a>
             </div>
         </div>
     </div>
 </div>
 
 
-<div class="col-6 my-5" *ngIf="hide">
-    <div class="card">
-        <div class="card-header bg-info">
-            <div class="card-title">Edit Member</div>
+<div class="container my-5" *ngIf=hide>
+    <div class="col my-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name" class="form-label">Post Your Query :</label>
+                    <textarea class="form-control" id="query" [(ngModel)]="model.query" placeholder="Enter You Query Here"></textarea>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary float-end" (click)="SubmitQuery()">Submit Query</button>
+            </div>
+
         </div>
-    <div class="card-body">
-  
-    <div class="form-group">
-      <label for="id" class="form-label">Member ID :</label>
-      <input type="text" class="form-control" id="queryid" [(ngModel)]="model.memberid" disabled >
     </div>
-    <div class="form-group">
-      <label for="name" class="form-label">Name :</label>
-      <input type="text" class="form-control" id="name" [(ngModel)]="model.name" placeholder="Enter Name">
-    </div>
-    <!-- <div class="form-group">
-      <label for="typeid" class="form-label">User Type ID :</label>
-      <input type="text" class="form-control" id="usertypeid" [(ngModel)]="model.usertypeid" placeholder="Enter Type ID">
-    </div> -->
-    <!-- <div class="form-group">
-      <label class="form-label">Select User Type:</label>
-      <select [(ngModel)]="model.usertypeid" class="form-select" name="city">
-          <option *ngFor="let items of usertypelist" [value]="items.usertypeid">{{items.usertype}}
-          </option>
-      </select>
-  </div> -->
-    <div class="form-group">
-      <label for="address" class="form-label">Address :</label>
-      <input type="text" class="form-control" id="address" [(ngModel)]="model.address" placeholder="Enter Address">
-    </div>
-    <div class="form-group">
-      <label for="aadharno" class="form-label">Aadhaar Number :</label>
-      <input type="text" class="form-control" id="aadhaarno" [(ngModel)]="model.aadhaarno" placeholder="Enter Adhaar Number">
-    </div>
-    <div class="form-group">
-      <label for="mobno" class="form-label">Mobile Number :</label>
-      <input type="text" class="form-control" id="phoneno" [(ngModel)]="model.phoneno" placeholder="Enter Mobile Number">
-    </div>
-  
-  </div>
-  <div class="card-footer">
-    <button class="btn btn-primary float-end" (click)="Edit()">Submit Reply</button>
-    <h2 [style.color]="flag?'green':'red'">{{statusmsg}}</h2>
-  </div>
-  
-  </div>
-  </div>
+</div>
