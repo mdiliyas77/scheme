@@ -12,14 +12,44 @@ export class AdminloginComponent implements OnInit {
   model:any={};
   statusmsg:string="";
   flag:boolean=true;
+  validuserid:boolean=false;
+  validpass:boolean=false;
 
   constructor(private schemeservice:SchemeService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  OnChange()
+  {
+    debugger;
+    if(this.model.userid.length>0 )
+    {
+      this.validuserid= false;
+    }
+    if (this.model.password.length>0)
+    {
+      this.validpass= false;
+    }
+  }
+
   Login()
   {
+    if(this.model.userid==null || this.model.userid=="")
+    {
+      this.validuserid=true;
+      if(this.model.password==null || this.model.password=="")
+      {
+        this.validpass=true;
+      }
+    }
+    else if(this.model.password==null || this.model.password=="")
+    {
+      this.validpass=true;
+      this.validuserid=false;
+    }
+    else
+    {
     debugger;
     this.model.usertype="admin"
     sessionStorage.setItem('userid','this.model.userid');
@@ -39,5 +69,6 @@ export class AdminloginComponent implements OnInit {
         }
       }
     })
+  }
   }
 }

@@ -1,0 +1,8 @@
+#bg {
+    background-color: beige;
+    background-image: url("../../assets/images/bg-4.jpg");
+    
+    background-size: cover;
+    height: max-content;
+    background-size: cover;
+}   

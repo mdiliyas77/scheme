@@ -1,7 +1,10 @@
+<div id="bg">
 <div *ngIf="model.memberid!=null else elseblock">
 <app-memberheader></app-memberheader>
 <router-outlet></router-outlet>
 </div>
 <ng-template #elseblock>
-    <p>Please Login to view Member Dashboard</p>
+    <h3 class="text-center pt-5">Please <a [routerLink]="(['/memberlogin'])" class="text-danger text-center">login</a> to view page
+    </h3>
 </ng-template>
+</div>

@@ -10,88 +10,85 @@ import { SchemeService } from '../scheme.service';
 })
 export class AddcasteComponent implements OnInit {
 
-  model:any={};
-  flag:boolean=true;
-  statusmsg:string="";
-  castes:any=[];
-  constructor(private schemeservice:SchemeService) { }
+  model: any = {};
+  flag: boolean = true;
+  validcaste: boolean = false;
+  statusmsg: string = "";
+  castes: any = [];
+  constructor(private schemeservice: SchemeService) { }
   //private toast:NgToastService <---- Inject this to use toaster
 
   ngOnInit(): void {
     this.GetCaste();
   }
 
-  Submit()
-  {
-    debugger;
-    if (this.model.casteid==null)
-    {
-    this.schemeservice.AddCaste(this.model)
-    .subscribe({
-      next:(data)=>
-      {
-        data.Status=="Error"?this.flag=false:this.flag=true;
-        this.statusmsg = data.Message;
-        this.Clear();
-        this.GetCaste();
-        setTimeout(() =>(this.statusmsg =""),3000);
+  Submit() {
+    if (this.model.caste == null || this.model.caste == "" || this.model.caste == " ") {
+      this.validcaste = true;
+    }
+    else {
+
+      this.validcaste = false;
+      debugger;
+      if (this.model.casteid == null) {
+        this.schemeservice.AddCaste(this.model)
+          .subscribe({
+            next: (data) => {
+              data.Status == "Error" ? this.flag = false : this.flag = true;
+              this.statusmsg = data.Message;
+              this.Clear();
+              this.GetCaste();
+              setTimeout(() => (this.statusmsg = ""), 3000);
+            }
+          })
       }
-    })
-  }
-  else
-  {
-    this.schemeservice.EditCaste(this.model)
-    .subscribe({
-      next:(data)=>
-      {
-        this.statusmsg = data.Message;
-        this.Clear();
-        this.GetCaste();
-        setTimeout(() =>(this.statusmsg =""),3000);
+      else {
+        this.schemeservice.EditCaste(this.model)
+          .subscribe({
+            next: (data) => {
+              this.statusmsg = data.Message;
+              this.Clear();
+              this.GetCaste();
+              setTimeout(() => (this.statusmsg = ""), 3000);
+            }
+          })
       }
-    })
-  }
+    }
 
   }
 
-  Edit(type:Scheme)
-  {
-    this.model = Object.assign({},type);
+  Edit(type: Scheme) {
+    this.model = Object.assign({}, type);
   }
 
-  Delete(type:Scheme)
-  {
-    if(confirm("Are you sure to Delete it?"))
-    {
-    this.model = Object.assign({},type);
-    this.schemeservice.DeleteCaste(this.model)
-    .subscribe({
-      next:(data)=>
-      {
-        this.flag= false;
-        this.statusmsg = data.Message;
-        // this.toast.success({detail:"Success",summary:data.Message,duration:5000});
-        this.Clear();
-        this.GetCaste();
-        setTimeout(() =>(this.statusmsg =""),3000);
-      }
-    })
-  }
+  Delete(type: Scheme) {
+    if (confirm("Are you sure to Delete it?")) {
+      this.model = Object.assign({}, type);
+      this.schemeservice.DeleteCaste(this.model)
+        .subscribe({
+          next: (data) => {
+            this.flag = false;
+            this.statusmsg = data.Message;
+            // this.toast.success({detail:"Success",summary:data.Message,duration:5000});
+            this.Clear();
+            this.GetCaste();
+            setTimeout(() => (this.statusmsg = ""), 3000);
+          }
+        })
+    }
   }
 
-  GetCaste()
-  {
+  GetCaste() {
     this.schemeservice.GetCaste()
-    .subscribe({
-      next:(data)=>{
-        this.castes = data as any[];
-      }
-    })
+      .subscribe({
+        next: (data) => {
+          this.castes = data as any[];
+        }
+      })
   }
 
-  Clear()
-  {
-    this.model.casteid=null;
-    this.model.caste=null;
+  Clear() {
+    this.model.casteid = null;
+    this.model.caste = null;
   }
 }

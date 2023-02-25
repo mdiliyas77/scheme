@@ -21,3 +21,9 @@
 
     .link{color:blue;
     cursor: pointer;}
+
+    #bg{
+        background-color: beige;
+        background-image: url("../../assets/images/bg-3.jpg");
+        height: 100vh;
+      }

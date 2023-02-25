@@ -13,6 +13,7 @@
                             <div class="form-group">
                                 <label class="form-label">Enter Type of Scheme:</label>
                                 <input type="text" class="form-control" [(ngModel)]="model.usertype">
+                                <small class="help-block text-danger" *ngIf="validtype">Enter User Type</small>
                             </div>
                             
                         </div>

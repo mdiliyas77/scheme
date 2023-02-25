@@ -20,6 +20,15 @@ export class AddschemeComponent implements OnInit {
   castelist: any = [];
   searchtext: string = "";
 
+  isusertype: boolean = false;
+  iscaste: boolean = false;
+  ismaritialstatus: boolean = false;
+  isschemetitle: boolean = false;
+  isschemedesc: boolean = false;
+  isage: boolean = false;
+  isdocs: boolean = false;
+
+
   mstatus: any = [
     { type: "single" },
     { type: "married" },
@@ -55,29 +64,56 @@ export class AddschemeComponent implements OnInit {
   }
 
   OnSubmit() {
-    if (this.model.schemeid == null) {
-      this.schemeservice.AddScheme(this.model)
-        .subscribe({
-          next: (data) => {
-            data.Status == "Error" ? this.flag = false : this.flag = true;
-            this.errormessage = data.Message;
-            this.Clear();
-            this.GetAllScheme();
-            setTimeout(() => (this.errormessage = ""), 3000);
-          }
-        })
+    debugger;
+
+    if (this.model.usertype==undefined) {
+      this.isusertype = true;
     }
-    else {
-      this.schemeservice.EditScheme(this.model)
-        .subscribe({
-          next: (data) => {
-            data.Status == "Error" ? this.flag = false : this.flag = true;
-            this.errormessage = data.Message;
-            this.Clear();
-            this.GetAllScheme();
-            setTimeout(() => (this.errormessage = ""), 3000);
-          }
-        })
+    else if (this.model.caste==undefined) {
+      this.iscaste = true;
+    }
+    else if (this.model.maritialstatus==undefined) {
+      this.ismaritialstatus = true;
+    }
+    else if (this.model.age==0 || this.model.age==undefined || this.model.age=="" ) {
+      this.isage = true;
+    }
+    else if (this.model.schemetitle==null || this.model.schemetitle==undefined || this.model.schemetitle=="" ) {
+      this.isschemetitle = true;
+    }
+    else if (this.model.schemedesc==null || this.model.schemedesc==undefined || this.model.schemedesc=="") {
+      this.isschemedesc = true;
+    }
+    else if (this.model.docs==null || this.model.docs==undefined || this.model.docs=="") {
+      this.isdocs = true;
+    }
+
+    else{
+
+      if (this.model.schemeid == null) {
+        this.schemeservice.AddScheme(this.model)
+          .subscribe({
+            next: (data) => {
+              data.Status == "Error" ? this.flag = false : this.flag = true;
+              this.errormessage = data.Message;
+              this.Clear();
+              this.GetAllScheme();
+              setTimeout(() => (this.errormessage = ""), 3000);
+            }
+          })
+      }
+      else {
+        this.schemeservice.EditScheme(this.model)
+          .subscribe({
+            next: (data) => {
+              data.Status == "Error" ? this.flag = false : this.flag = true;
+              this.errormessage = data.Message;
+              this.Clear();
+              this.GetAllScheme();
+              setTimeout(() => (this.errormessage = ""), 3000);
+            }
+          })
+      }
     }
   }
 
@@ -121,5 +157,13 @@ export class AddschemeComponent implements OnInit {
     this.model.caste = null;
     this.model.maritialstatus = null;
     this.model.schemeid = null;
+
+  this.isusertype = false;
+  this.iscaste = false;
+  this.ismaritialstatus = false;
+  this.isschemetitle = false;
+  this.isschemedesc = false;
+  this.isage = false;
+  this.isdocs = false;
   }
 }

@@ -31,6 +31,7 @@ export class ViewqueryComponent implements OnInit {
     debugger;
     if (this.model.reply == null || this.model.reply == "") {
       this.hide = false;
+      alert("Error!! Reply can't be empty")
     }
     else {
       this.schemeservice.GiveReply(this.model)

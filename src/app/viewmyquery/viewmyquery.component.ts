@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup';
+import { Scheme } from '../scheme';
 import { SchemeService } from '../scheme.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class ViewmyqueryComponent implements OnInit {
   myquerylist: any = [];
   sortedarray: any = [];
   model: any = {};
-  constructor(private schemeservice:SchemeService) { }
+  constructor(private schemeservice:SchemeService,private toast:NgToastService) { }
 
   ngOnInit(): void {
     this.getQuery();
@@ -25,8 +27,7 @@ export class ViewmyqueryComponent implements OnInit {
         next: (data) => {
           this.querylist = data as any[];
 
-          this.myquerylist = this.querylist.find((myname)=>myname.memberid===sessionStorage.getItem('userid'));
-          this.model.name = this.myquerylist["name"];
+          this.myquerylist = this.querylist.filter((myname)=>myname.memberid===sessionStorage.getItem('userid'));
           
         }
       })
@@ -41,6 +42,31 @@ export class ViewmyqueryComponent implements OnInit {
     this.model.schemeid="";
     this.model.schemetitle="";
     this.model.query="";
+  }
+
+  Delete(qlist:Scheme)
+  {
+    if(confirm("Are You Sure?"))
+    {
+      this.model = Object.assign({},qlist);
+      if(this.model.reply==null || this.model.reply=="")
+      {
+        this.schemeservice.DeleteQuery(this.model)
+        .subscribe({
+          next:(data)=>
+          {
+            this.toast.success({detail:"Success",summary:data.Message,duration:5000});
+            this.ClearAll();
+            this.getQuery();
+          }
+        })
+      }
+      else
+      {
+        this.toast.error({detail:"Error",summary:"Can't Delete!!, Query Already Got Reply",duration:5000});
+
+      }
+    }
   }
 
 

@@ -15,7 +15,7 @@ export class MatchingschemesComponent implements OnInit {
   model: any = {};
   statusmsg: string = ""
   flag: boolean = true;
-  hide: boolean = true;
+  hide: boolean = false;
 
   constructor(private schemeservice: SchemeService) { }
 
@@ -45,6 +45,7 @@ export class MatchingschemesComponent implements OnInit {
       })
   }
   Apply(slist: Scheme) {
+    debugger;
     if (confirm("Are you sure?")) {
       this.model = Object.assign({}, slist);
       this.model.memberid = sessionStorage.getItem('userid');
@@ -71,9 +72,11 @@ export class MatchingschemesComponent implements OnInit {
 
   ShowData(slist: Scheme) {
     this.hide = !this.hide;
+    this.model = Object.assign({},slist);
   }
 
   SubmitQuery() {
+    debugger;
     if (confirm("Are you sure?")) {
       this.model.memberid = sessionStorage.getItem('userid');
       this.schemeservice.AddQuery(this.model)

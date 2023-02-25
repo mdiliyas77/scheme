@@ -145,4 +145,9 @@ export class SchemeService {
     return this.http.post(baseurl+'/ActionOnApp',data);
   }
 
+  DeleteQuery(data:any):Observable<any>
+  {
+    return this.http.post(baseurl+'/DeleteQuery',data);
+  }
+
 }

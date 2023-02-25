@@ -1,3 +1,9 @@
-.nav-link:hover{
-cursor: pointer;
+.nav-link:hover {
+    cursor: pointer;
+}
+
+#bg {
+    background-color: beige;
+    background-image: url("../../assets/images/bg-2.jpg");
+    min-height: 100vh;
 }

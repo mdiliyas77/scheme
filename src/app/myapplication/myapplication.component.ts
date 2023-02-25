@@ -27,7 +27,7 @@ export class MyapplicationComponent implements OnInit {
       })
   }
 
-  Approve(list: Scheme) {
+  Delete(list: Scheme) {
     if (confirm("Are you sure?")) {
       this.model = Object.assign({}, list);
       if (this.model.appstatus == "pending") {

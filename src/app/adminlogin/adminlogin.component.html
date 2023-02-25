@@ -15,12 +15,14 @@
                   </div>
                   <p>Please login to your account</p>
                   <div class="form-outline mb-4">
-                    <input type="text" [(ngModel)]="model.userid" placeholder="Admin User Id" class="form-control"/>
+                    <small class="help-block text-danger" *ngIf="validuserid">Enter User id</small>
+                    <input type="text" [(ngModel)]="model.userid" placeholder="Admin User Id" class="form-control" (change)="OnChange()"/>
                     <label class="form-label" for="form2Example11">User Id</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" [(ngModel)]="model.password" class="form-control"/>
+                    <small class="help-block text-danger" *ngIf="validpass">Enter Password</small>
+                    <input type="password" [(ngModel)]="model.password" class="form-control" (change)="OnChange()"/>
                     <label class="form-label" for="form2Example22">Password</label>
                   </div>
 

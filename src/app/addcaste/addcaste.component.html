@@ -13,6 +13,7 @@
                         <div class="form-group">
                             <label class="form-label">Enter Type of Scheme:</label>
                             <input type="text" class="form-control" [(ngModel)]="model.caste">
+                            <small class="help-block text-danger" *ngIf="validcaste">Enter Caste</small>
                         </div>
 
                     </div>

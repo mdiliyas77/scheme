@@ -1,5 +1,8 @@
-<p>{{model.name}}</p>
-<!-- <p>{{name}}</p> -->
+<div class="container mt-5 full">
+    <div class="card">
+        <div class="card-header">
+            <h5>Your Queries</h5>
+        </div>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -11,16 +14,18 @@
             <th scope="col">Reply</th>
             <th scope="col"></th>
         </tr>
-    </thead>
+    </thead> 
     <tbody>
-        <tr *ngFor="let qlist of sortedarray">
+        <tr *ngFor="let qlist of myquerylist">
             <td>{{qlist.queryid}}</td>
             <td>{{qlist.schemeid}}</td>
             <td>{{qlist.schemetitle}}</td>
             <td>{{qlist.name}}</td>
             <td><textarea class="form-control" readonly>{{qlist.query}}</textarea></td>
             <td><textarea class="form-control" readonly>{{qlist.reply}}</textarea></td>
-            <!-- <td><a class="btn btn-primary" (click)="Reply(qlist)">Reply</a> </td> -->
+            <td><a class="btn btn-primary" (click)="Delete(qlist)">Delete</a> </td>
         </tr>
     </tbody>
 </table>
+</div>
+</div>

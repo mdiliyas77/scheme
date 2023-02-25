@@ -1,0 +1,12 @@
+#bg{
+    background-color: beige;
+    background-image: url("../../assets/images/bg-3.jpg");
+    height:100vh;
+  } 
+
+  #font{
+    color: rgb(90 8 8);
+    font-style: oblique;
+    font-weight: bold;
+    font-size: large;
+  }
