@@ -8,7 +8,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Query ID</th>
-                        <th scope="col">Scheme ID</th>
+                        <!-- <th scope="col">Scheme ID</th> -->
                         <th scope="col">Scheme Title</th>
                         <th scope="col">Member Name</th>
                         <th scope="col">Query</th>
@@ -19,9 +19,9 @@
                 <tbody>
                     <tr *ngFor="let qlist of querylist">
                         <td>{{qlist.queryid}}</td>
-                        <td>{{qlist.schemeid}}</td>
-                        <td>{{qlist.schemetitle}}</td>
-                        <td>{{qlist.name}}</td>
+                        <!-- <td>{{qlist.schemeid}}</td> -->
+                        <td>{{qlist.schemetitle | titlecase}}</td>
+                        <td>{{qlist.name | titlecase}}</td>
                         <td><textarea class="form-control" readonly>{{qlist.query}}</textarea></td>
                         <td><textarea class="form-control" readonly>{{qlist.reply}}</textarea></td>
                         <td><a class="btn btn-primary" (click)="Reply(qlist)">Reply</a> </td>

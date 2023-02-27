@@ -15,7 +15,7 @@
                         <div class="form-group">
                             <label class="form-label">Select Scheme Type:</label>
                             <select [(ngModel)]="model.usertype" class="form-select" name="usertype">
-                                <option *ngFor="let items of usertypelist" [value]="items.usertype">{{items.usertype}}
+                                <option *ngFor="let items of usertypelist" [value]="items.usertype">{{items.usertype | titlecase}}
                                 </option>
                             </select>
                             <small class="help-block text-danger" *ngIf="isusertype">Select User Type</small>
@@ -23,15 +23,23 @@
                         <div class="form-group">
                             <label class="form-label">Select Caste:</label>
                             <select [(ngModel)]="model.caste" class="form-select" name="caste">
-                                <option *ngFor="let caste of castelist" [value]="caste.caste">{{caste.caste}}
+                                <option *ngFor="let caste of castelist" [value]="caste.caste">{{caste.caste | titlecase}}
                                 </option>
                                  </select>
                             <small class="help-block text-danger" *ngIf="iscaste">Select Caste</small>
                         </div>
                         <div class="form-group">
+                            <label class="form-label">Select Gender:</label>
+                            <select [(ngModel)]="model.gender" class="form-select" name="gender">
+                                <option *ngFor="let glist of gender" [value]="glist.types">{{glist.types | titlecase}}
+                                </option>
+                            </select>
+                            <small class="help-block text-danger" *ngIf="isgender">Select Gender</small>
+                        </div>
+                        <div class="form-group">
                             <label class="form-label">Select Maritial Status:</label>
                             <select [(ngModel)]="model.maritialstatus" class="form-select" name="maritialstatus">
-                                <option *ngFor="let mlist of mstatus" [value]="mlist.type">{{mlist.type}}
+                                <option *ngFor="let mlist of mstatus" [value]="mlist.type">{{mlist.type | titlecase}}
                                 </option>
                             </select>
                             <small class="help-block text-danger" *ngIf="ismaritialstatus">Select Maritial Status</small>
@@ -63,8 +71,13 @@
                                 <small class="help-block text-muted">For multiple entry use comma (,)</small><br>
                                 <small class="help-block text-danger" *ngIf="isdocs">Enter Documents Required</small>
                          </div>
-                        <div>
-
+                         <div class="form-group" *ngIf="isshow">
+                            <label class="form-label">Select Scheme Status</label>
+                            <select [(ngModel)]="model.status" class="form-select" name="status">
+                                <option *ngFor="let sstatus of schemestatus" [value]="sstatus.types">{{sstatus.types | titlecase}}
+                                </option>
+                            </select>
+                            <small class="help-block text-danger" *ngIf="isstatus">Select Scheme Status</small>
                         </div>
                     </div>
                 </div>
@@ -103,6 +116,7 @@
                                 <th scope="col">Scheme Title</th>
                                 <th scope="col">Scheme Description</th>
                                 <th scope="col">Docs Required</th>
+                                <th scope="col">Status</th>
                                 <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>
@@ -110,13 +124,14 @@
                         <tbody>
                             <tr *ngFor="let slist of allschemelist">
                                 <td>{{slist.schemeid}}</td>
-                                <td>{{slist.usertype}}</td>
+                                <td>{{slist.usertype | titlecase}}</td>
                                 <td>{{slist.age}}</td>
-                                <td>{{slist.caste}}</td>
-                                <td>{{slist.maritialstatus}}</td>
-                                <td>{{slist.schemetitle}}</td>
+                                <td>{{slist.caste | titlecase}}</td>
+                                <td>{{slist.maritialstatus | titlecase}}</td>
+                                <td>{{slist.schemetitle | titlecase}}</td>
                                 <td><textarea class="form-control" readonly>{{slist.schemedesc}}</textarea></td>
                                 <td><textarea class="form-control" readonly>{{slist.docs}}</textarea></td>
+                                <td>{{slist.status | titlecase}}</td>
                                 <td><a class="btn btn-primary" (click)="Edit(slist)">Edit</a> </td>
                                 <td><a class="btn btn-primary" (click)="Delete(slist)">Delete</a> </td>
                             </tr>

@@ -5,22 +5,9 @@
             placeholder="Search">
     </div>
     <div class="card my-5" *ngFor="let slist of allschemelist | filter:searchtext">
-        <!-- <div class="card-body">
-        <div class="form-group">
-            <h6 class="card-title">Scheme Id</h6>
-            <div class="card-text">{{slist.schemeid}}</div>
-        </div>
-        </div> -->
         <div class="card-body">
             <div class="form-group">
-                <!-- <h6 class="card-title d-inline">Scheme Title:</h6> -->
-                <h3 class="card-text d-inline text-danger">{{slist.schemetitle}}</h3>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="form-group">
-                <h6 class="card-title d-inline">Scheme For:</h6>
-                <div class="card-text d-inline mx-1">{{slist.usertype}}</div>
+                <h3 class="card-text d-inline text-danger">{{slist.schemetitle | titlecase}}</h3>
             </div>
         </div>
         <div class="card-body">
@@ -31,8 +18,44 @@
         </div>
         <div class="card-body">
             <div class="form-group">
+                <h6 class="card-title d-inline">Scheme For:</h6>
+                <div class="card-text d-inline mx-1">{{slist.usertype | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Gender:</h6>
+                <div class="card-text d-inline mx-1">{{slist.gender | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Caste:</h6>
+                <div class="card-text d-inline mx-1">{{slist.caste | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Age Criteria:</h6>
+                <div class="card-text d-inline mx-1">{{slist.age}} Years</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Maritial Status:</h6>
+                    <div class="card-text d-inline mx-1">{{slist.maritialstatus | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
                 <h6 class="card-title d-inline text-justify">Documents Required:</h6>
-                <div class="text-break card-text  mx-1 d-inline">{{slist.docs}}</div>
+                <div class="text-break card-text  mx-1 d-inline">{{slist.docs | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline text-justify">Status:</h6>
+                <div class="text-break card-text  mx-1 d-inline">{{slist.status | titlecase}}</div>
             </div>
         </div>
         <div class="card-body">

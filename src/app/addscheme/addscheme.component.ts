@@ -27,6 +27,9 @@ export class AddschemeComponent implements OnInit {
   isschemedesc: boolean = false;
   isage: boolean = false;
   isdocs: boolean = false;
+  isgender: boolean = false;
+  isshow: boolean = false;
+  isstatus: boolean = false;
 
 
   mstatus: any = [
@@ -35,6 +38,19 @@ export class AddschemeComponent implements OnInit {
     { type: "window" },
     { type: "divorced" },
   ]
+
+  schemestatus: any = [
+    { types: "running" },
+    { types: "expired" },
+  ]
+
+  gender: any = [
+    { types: "all" },
+    { types: "male" },
+    { types: "female" },
+    { types: "transgender" },
+  ]
+
   constructor(private schemeservice: SchemeService, private router: Router) { }
 
   ngOnInit(): void {
@@ -72,6 +88,9 @@ export class AddschemeComponent implements OnInit {
     else if (this.model.caste==undefined) {
       this.iscaste = true;
     }
+    else if (this.model.gender==undefined) {
+      this.isgender = true;
+    }
     else if (this.model.maritialstatus==undefined) {
       this.ismaritialstatus = true;
     }
@@ -87,6 +106,10 @@ export class AddschemeComponent implements OnInit {
     else if (this.model.docs==null || this.model.docs==undefined || this.model.docs=="") {
       this.isdocs = true;
     }
+    else if (this.model.status==null || this.model.status==undefined || this.model.status=="") {
+      this.isstatus = true;
+  }
+    
 
     else{
 
@@ -119,6 +142,7 @@ export class AddschemeComponent implements OnInit {
 
   Edit(slist: Scheme) {
     this.model = Object.assign({}, slist);
+    this.isshow=true;
   }
 
   Delete(slist: Scheme) {
@@ -165,5 +189,6 @@ export class AddschemeComponent implements OnInit {
   this.isschemedesc = false;
   this.isage = false;
   this.isdocs = false;
+  this.isgender = false;
   }
 }

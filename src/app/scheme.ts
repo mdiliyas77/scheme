@@ -21,6 +21,7 @@ export class Scheme {
     address:string="";
     name:string="";
     docs:string="";
+    gender:string="";
 
     casteid:number=0;
     caste:string="";

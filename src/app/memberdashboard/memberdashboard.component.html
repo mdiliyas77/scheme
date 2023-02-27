@@ -1,6 +1,7 @@
 <div id="bg">
 <div *ngIf="model.memberid!=null else elseblock">
 <app-memberheader></app-memberheader>
+<h5 class="text-end me-2 text-white">{{"Welcome: " + membername}}</h5>
 <router-outlet></router-outlet>
 </div>
 <ng-template #elseblock>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup';
 import { Scheme } from '../scheme';
 import { SchemeService } from '../scheme.service';
 
@@ -16,8 +17,9 @@ export class MatchingschemesComponent implements OnInit {
   statusmsg: string = ""
   flag: boolean = true;
   hide: boolean = false;
+  show: boolean = false;
 
-  constructor(private schemeservice: SchemeService) { }
+  constructor(private schemeservice: SchemeService,private toast:NgToastService) { }
 
   ngOnInit(): void {
     this.GetMemberById();
@@ -48,6 +50,8 @@ export class MatchingschemesComponent implements OnInit {
     debugger;
     if (confirm("Are you sure?")) {
       this.model = Object.assign({}, slist);
+      if(this.model.status=="running")
+      {
       this.model.memberid = sessionStorage.getItem('userid');
       this.schemeservice.Apply(this.model)
         .subscribe({
@@ -56,15 +60,20 @@ export class MatchingschemesComponent implements OnInit {
               alert("Your Application Number is: " + data.Message);
             }
             else if (data.Status == "Exist") {
-              alert(data.Message);
+              this.toast.warning({detail:data.Status,summary:data.Message})
             }
             else {
-              alert(data.Message);
+              this.toast.error({detail:data.Status,summary:data.Message,duration:3000});
             }
 
             this.ClearAll()
           }
         })
+      }
+      else
+      {
+        this.toast.error({detail:"Error",summary:"Scheme Expried!!!!",duration:3000})
+      }
 
     }
 
@@ -110,5 +119,12 @@ export class MatchingschemesComponent implements OnInit {
     this.model.schemeid = null;
     this.model.query = null;
   }
+
+  public expiredscheme(section: string) {
+    this.show=!this.show;
+    window.location.hash = '';
+    window.location.hash = section;
+
+}
 }
 

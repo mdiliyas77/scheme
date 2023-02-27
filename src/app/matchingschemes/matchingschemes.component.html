@@ -1,13 +1,15 @@
 <div class="container mt-5">
 
     <div class="search-hero">
-        <input class="form-control w-25" type="text" name="search" [(ngModel)]="searchtext" autocomplete="off"
+        <input class="form-control w-25 d-inline" type="text" name="search" [(ngModel)]="searchtext" autocomplete="off"
             placeholder="Search">
+            <a class="float-end d-inline" (click)="expiredscheme('#expired')">View Expired Schemes</a>
     </div>
     <div class="card mt-5" *ngFor="let slist of myschemelist | filter:searchtext">
+        <div *ngIf="slist.status=='running'">
         <div class="card-body">
             <div class="form-group">
-                <h3 class="card-text d-inline text-danger">{{slist.schemetitle}}</h3>
+                <h3 class="card-text d-inline text-danger">{{slist.schemetitle | titlecase}}</h3>
             </div>
         </div>
         <div class="card-body">
@@ -19,13 +21,19 @@
         <div class="card-body">
             <div class="form-group">
                 <h6 class="card-title d-inline">Scheme For:</h6>
-                <div class="card-text d-inline mx-1">{{slist.usertype}}</div>
+                <div class="card-text d-inline mx-1">{{slist.usertype | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Gender:</h6>
+                <div class="card-text d-inline mx-1">{{slist.gender | titlecase}}</div>
             </div>
         </div>
         <div class="card-body">
             <div class="form-group">
                 <h6 class="card-title d-inline">Caste:</h6>
-                <div class="card-text d-inline mx-1">{{slist.caste}}</div>
+                <div class="card-text d-inline mx-1">{{slist.caste | titlecase}}</div>
             </div>
         </div>
         <div class="card-body">
@@ -37,13 +45,19 @@
         <div class="card-body">
             <div class="form-group">
                 <h6 class="card-title d-inline">Maritial Status:</h6>
-                <div class="card-text d-inline mx-1">{{slist.maritialstatus}}</div>
+                    <div class="card-text d-inline mx-1">{{slist.maritialstatus | titlecase}}</div>
             </div>
         </div>
         <div class="card-body">
             <div class="form-group">
                 <h6 class="card-title d-inline text-justify">Documents Required:</h6>
-                <div class="text-break card-text  mx-1 d-inline">{{slist.docs}}</div>
+                <div class="text-break card-text  mx-1 d-inline">{{slist.docs | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline text-justify">Status:</h6>
+                <div class="text-break card-text  mx-1 d-inline">{{slist.status | titlecase}}</div>
             </div>
         </div>
         <div class="card-body">
@@ -53,6 +67,80 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+
+<div class="container mt-5" *ngIf="show" id="expired" >
+
+    <h3 class="text-center text-white">Expired Schemes</h3>
+
+    <!-- <div class="search-hero">
+        <input class="form-control w-25" type="text" name="search" [(ngModel)]="searchtext" autocomplete="off"
+            placeholder="Search">
+    </div> -->
+    <div class="card mt-5" *ngFor="let slist of myschemelist | filter:searchtext">
+        <div *ngIf="slist.status=='expired'">
+        <div class="card-body">
+            <div class="form-group">
+                <h3 class="card-text d-inline text-danger">{{slist.schemetitle | titlecase}}</h3>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline text-justify">Scheme Description:</h6>
+                <div class="text-break card-text  mx-1 d-inline">{{slist.schemedesc}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Scheme For:</h6>
+                <div class="card-text d-inline mx-1">{{slist.usertype | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Gender:</h6>
+                <div class="card-text d-inline mx-1">{{slist.gender | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Caste:</h6>
+                <div class="card-text d-inline mx-1">{{slist.caste | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Age Criteria:</h6>
+                <div class="card-text d-inline mx-1">{{slist.age}} Years</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline">Maritial Status:</h6>
+                    <div class="card-text d-inline mx-1">{{slist.maritialstatus | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline text-justify">Documents Required:</h6>
+                <div class="text-break card-text  mx-1 d-inline">{{slist.docs | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <h6 class="card-title d-inline text-justify">Status:</h6>
+                <div class="text-break card-text  mx-1 d-inline">{{slist.status | titlecase}}</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <a class="btn btn-primary" (click)="Apply(slist)">Apply</a>
+                <a class="btn btn-primary ms-2" (click)="ShowData(slist)">Ask Doubt</a>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 

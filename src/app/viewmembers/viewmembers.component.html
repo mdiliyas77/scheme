@@ -11,6 +11,7 @@
                     <th scope="col">Password</th>
                     <th scope="col">Member Name</th>
                     <th scope="col">User Type</th>
+                    <th scope="col">Gender</th>
                     <th scope="col">Age</th>
                     <th scope="col">Caste</th>
                     <th scope="col">Maritial Status</th>
@@ -25,12 +26,13 @@
                   <tr *ngFor="let mlist of memberlist">
                     <td>{{mlist.memberid}}</td>
                     <td>{{mlist.password}}</td>
-                    <td>{{mlist.name}}</td>
-                    <td>{{mlist.usertype}}</td>
+                    <td>{{mlist.name | titlecase}}</td>
+                    <td>{{mlist.usertype | titlecase}}</td>
+                    <td>{{mlist.gender | titlecase}}</td>
                     <td>{{mlist.age}}</td>
-                    <td>{{mlist.caste}}</td>
-                    <td>{{mlist.maritialstatus}}</td>
-                    <td>{{mlist.address}}</td>
+                    <td>{{mlist.caste | titlecase}}</td>
+                    <td>{{mlist.maritialstatus | titlecase}}</td>
+                    <td>{{mlist.address | titlecase}}</td>
                     <td>{{mlist.aadhaarno}}</td>
                     <td>{{mlist.phoneno}}</td>
                     <td><a class="btn btn-primary" (click)="Showdata(mlist)">Edit</a> </td>
@@ -46,7 +48,7 @@
         </div>
     </div>
 </div>
-<div class="col-6 my-5" *ngIf="hide">
+<div class="col-8 my-5 offset-2" *ngIf="hide">
   <div class="card">
       <div class="card-header bg-info">
           <div class="card-title">Edit Member</div>
@@ -65,21 +67,21 @@
   <div class="form-group">
     <label class="form-label">Select User Type:</label>
     <select [(ngModel)]="model.usertype" class="form-select" name="city">
-        <option *ngFor="let items of usertypelist" [value]="items.usertype">{{items.usertype}}
+        <option *ngFor="let items of usertypelist" [value]="items.usertype">{{items.usertype | titlecase}}
         </option>
     </select>
 </div>
 <div class="form-group">
   <label class="form-label">Select Caste:</label>
   <select [(ngModel)]="model.caste" class="form-select" name="caste">
-      <option *ngFor="let caste of castelist" [value]="caste.caste">{{caste.caste}}
+      <option *ngFor="let caste of castelist" [value]="caste.caste">{{caste.caste | titlecase}}
       </option>
   </select>
 </div>
 <div class="form-group">
   <label class="form-label">Select Maritial Status:</label>
   <select [(ngModel)]="model.maritialstatus" class="form-select" name="maritialstatus">
-      <option *ngFor="let mlist of mstatus" [value]="mlist.type">{{mlist.type}}
+      <option *ngFor="let mlist of mstatus" [value]="mlist.type">{{mlist.type | titlecase}}
       </option>
   </select>
 </div>
