@@ -132,7 +132,7 @@ export class AllapplicationsComponent implements OnInit {
           const url = window.URL.createObjectURL(blob);
           const link = document.createElement('a');
           link.href = url;
-          link.download = data.Name;
+          link.download = data.name;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

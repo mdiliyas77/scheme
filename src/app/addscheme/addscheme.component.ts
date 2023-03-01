@@ -175,13 +175,16 @@ export class AddschemeComponent implements OnInit {
   Clear() {
     this.model.usertype = null;
     this.model.usertypeid = null;
-    this.model.age = null;
+    this.model.gender = null;
     this.model.schemetype = null;
     this.model.schemetitle = null;
     this.model.schemedesc = null;
     this.model.docs = null;
     this.model.caste = null;
     this.model.maritialstatus = null;
+    this.model.startage = null;
+    this.model.endage = null;
+    this.model.schemeid = null;
     this.model.schemeid = null;
 
   this.isusertype = false;
