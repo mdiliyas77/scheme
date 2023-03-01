@@ -26,6 +26,7 @@ export class AddschemeComponent implements OnInit {
   isschemetitle: boolean = false;
   isschemedesc: boolean = false;
   isage: boolean = false;
+  isendge: boolean = false;
   isdocs: boolean = false;
   isgender: boolean = false;
   isshow: boolean = false;
@@ -33,6 +34,7 @@ export class AddschemeComponent implements OnInit {
 
 
   mstatus: any = [
+    { type: "all" },
     { type: "single" },
     { type: "married" },
     { type: "window" },
@@ -94,8 +96,11 @@ export class AddschemeComponent implements OnInit {
     else if (this.model.maritialstatus==undefined) {
       this.ismaritialstatus = true;
     }
-    else if (this.model.age==0 || this.model.age==undefined || this.model.age=="" ) {
+    else if (this.model.startage=="0" || this.model.startage==undefined || this.model.startage=="" ) {
       this.isage = true;
+    }
+    else if (this.model.endage=="0" || this.model.endage==undefined || this.model.endage=="" ) {
+      this.isendge = true;
     }
     else if (this.model.schemetitle==null || this.model.schemetitle==undefined || this.model.schemetitle=="" ) {
       this.isschemetitle = true;
@@ -106,9 +111,6 @@ export class AddschemeComponent implements OnInit {
     else if (this.model.docs==null || this.model.docs==undefined || this.model.docs=="") {
       this.isdocs = true;
     }
-    else if (this.model.status==null || this.model.status==undefined || this.model.status=="") {
-      this.isstatus = true;
-  }
     
 
     else{

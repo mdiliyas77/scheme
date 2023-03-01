@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div class="form-row">
 
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label class="form-label">Select Scheme Type:</label>
                             <select [(ngModel)]="model.usertype" class="form-select" name="usertype">
                                 <option *ngFor="let items of usertypelist" [value]="items.usertype">{{items.usertype | titlecase}}
@@ -20,7 +20,7 @@
                             </select>
                             <small class="help-block text-danger" *ngIf="isusertype">Select User Type</small>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label class="form-label">Select Caste:</label>
                             <select [(ngModel)]="model.caste" class="form-select" name="caste">
                                 <option *ngFor="let caste of castelist" [value]="caste.caste">{{caste.caste | titlecase}}
@@ -28,7 +28,7 @@
                                  </select>
                             <small class="help-block text-danger" *ngIf="iscaste">Select Caste</small>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label class="form-label">Select Gender:</label>
                             <select [(ngModel)]="model.gender" class="form-select" name="gender">
                                 <option *ngFor="let glist of gender" [value]="glist.types">{{glist.types | titlecase}}
@@ -36,7 +36,7 @@
                             </select>
                             <small class="help-block text-danger" *ngIf="isgender">Select Gender</small>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label class="form-label">Select Maritial Status:</label>
                             <select [(ngModel)]="model.maritialstatus" class="form-select" name="maritialstatus">
                                 <option *ngFor="let mlist of mstatus" [value]="mlist.type">{{mlist.type | titlecase}}
@@ -44,34 +44,40 @@
                             </select>
                             <small class="help-block text-danger" *ngIf="ismaritialstatus">Select Maritial Status</small>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Enter Age Criteria:</label>
-                            <input type="number" class="form-control" name="age" [(ngModel)]="model.age"/>
-                            <small class="help-block text-danger" *ngIf="isage">Enter Age</small>
-
+                        <div class="form-group mt-3">
+                            <label class="form-label">Enter Start Age Criteria:</label>
+                            <input type="text" class="form-control" name="startage" [(ngModel)]="model.startage"/>
+                            <small class="help-block text-muted">For All Age type 'all'(in small letter)</small><br>
+                            <small class="help-block text-danger" *ngIf="isage">Enter Start Age</small>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-3">
+                            <label class="form-label">Enter End Age Criteria:</label>
+                            <input type="text" class="form-control" name="endage" [(ngModel)]="model.endage"/>
+                            <small class="help-block text-muted">For All Age type 'all'(in small letter)</small><br>
+                            <small class="help-block text-danger" *ngIf="isendge">Enter End Age</small>
+                        </div>
+                        <div class="form-group mt-3">
                             <label class="form-label">Enter Scheme Title:</label>
                             <input type="text" class="form-control" name="schemetitle" [(ngModel)]="model.schemetitle"
                                 required />
                                 <small class="help-block text-danger" *ngIf="isschemetitle">Enter Scheme Title</small>
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label class="form-label">Enter Scheme Description:</label>
                             <textarea class="form-control" name="schemedescription"
                                 [(ngModel)]="model.schemedesc"></textarea>
                             <small class="help-block text-danger" *ngIf="isschemedesc">Enter Scheme Description</small>
 
                         </div>
-                         <div class="form-group">
+                         <div class="form-group mt-3">
                             <label class="form-label">Documents Required:</label>
                             <textarea class="form-control" name="docs"
                                 [(ngModel)]="model.docs"></textarea>
                                 <small class="help-block text-muted">For multiple entry use comma (,)</small><br>
                                 <small class="help-block text-danger" *ngIf="isdocs">Enter Documents Required</small>
                          </div>
-                         <div class="form-group" *ngIf="isshow">
+                         <div class="form-group mt-3" *ngIf="isshow">
                             <label class="form-label">Select Scheme Status</label>
                             <select [(ngModel)]="model.status" class="form-select" name="status">
                                 <option *ngFor="let sstatus of schemestatus" [value]="sstatus.types">{{sstatus.types | titlecase}}
@@ -125,7 +131,7 @@
                             <tr *ngFor="let slist of allschemelist">
                                 <td>{{slist.schemeid}}</td>
                                 <td>{{slist.usertype | titlecase}}</td>
-                                <td>{{slist.age}}</td>
+                                <td>{{"Between "+slist.startage+" to "+slist.endage}}</td>
                                 <td>{{slist.caste | titlecase}}</td>
                                 <td>{{slist.maritialstatus | titlecase}}</td>
                                 <td>{{slist.schemetitle | titlecase}}</td>

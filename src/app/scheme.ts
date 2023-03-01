@@ -10,6 +10,8 @@ export class Scheme {
     schemetype:string="";
     schemetitle:string="";
     schemedesc:string="";
+    startage:string="";
+    endage:string="";
 
     reply:string="";
     givenreply:string="";
@@ -32,5 +34,7 @@ export class Scheme {
     condition:string="";
     appstatus:string="";
     applicationid:number=0;
+
+    filetype:string="";
     
 }

@@ -150,4 +150,9 @@ export class SchemeService {
     return this.http.post(baseurl+'/DeleteQuery',data);
   }
 
+  DownloadFile(data:any):Observable<any>
+{
+  return this.http.post(baseurl+'/Download',data);
+}
+
 }
