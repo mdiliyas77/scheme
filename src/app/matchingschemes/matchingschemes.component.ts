@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { Scheme } from '../scheme';
 import { SchemeService } from '../scheme.service';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-matchingschemes',
@@ -18,6 +19,10 @@ export class MatchingschemesComponent implements OnInit {
   flag: boolean = true;
   hide: boolean = false;
   show: boolean = false;
+
+
+  @ViewChild('mySection')
+  mySection!: ElementRef;
 
   constructor(private schemeservice: SchemeService,private toast:NgToastService) { }
 
@@ -82,6 +87,9 @@ export class MatchingschemesComponent implements OnInit {
   ShowData(slist: Scheme) {
     this.hide = !this.hide;
     this.model = Object.assign({},slist);
+    setTimeout(() => {
+      this.mySection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   }
 
   SubmitQuery() {

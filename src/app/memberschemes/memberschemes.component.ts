@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Scheme } from '../scheme';
 import { SchemeService } from '../scheme.service';
-import { ViewportScroller } from '@angular/common';
+import { ViewChild, ElementRef } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-memberschemes',
@@ -15,7 +17,11 @@ export class MemberschemesComponent implements OnInit {
   model: any = {};
   hide: boolean = false;
 
-  constructor(private schemeservice: SchemeService,private viewportScroller: ViewportScroller) { }
+  @ViewChild('mySection')
+  mySection!: ElementRef;
+
+
+  constructor(private schemeservice: SchemeService) { }
 
   ngOnInit(): void {
     this.GetAllScheme();
@@ -30,17 +36,14 @@ export class MemberschemesComponent implements OnInit {
       })
   }
 
-  public onClick(elementId: string): void { 
-    this.viewportScroller.scrollToAnchor(elementId);
-  }
-
   ShowData(slist: Scheme) {
     this.hide = !this.hide;
     this.model = Object.assign({}, slist);
-    if(this.hide==false)
-    {
-      this.viewportScroller.scrollToAnchor('#query');
-    }
+    setTimeout(() => {
+      this.mySection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+    
+    
     
   }
 

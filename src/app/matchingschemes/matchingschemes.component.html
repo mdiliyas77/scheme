@@ -39,7 +39,7 @@
         <div class="card-body">
             <div class="form-group">
                 <h6 class="card-title d-inline">Age Criteria:</h6>
-                <div class="card-text d-inline mx-1">{{slist.age}} Years</div>
+                <div class="card-text d-inline mx-1">{{"Between "+ slist.startage+ " to "+ slist.endage}} Years</div>
             </div>
         </div>
         <div class="card-body">
@@ -112,7 +112,7 @@
         <div class="card-body">
             <div class="form-group">
                 <h6 class="card-title d-inline">Age Criteria:</h6>
-                <div class="card-text d-inline mx-1">{{slist.age}} Years</div>
+                <div class="card-text d-inline mx-1">{{"Between "+ slist.startage+ " to "+ slist.endage}} Years</div>
             </div>
         </div>
         <div class="card-body">
@@ -144,10 +144,14 @@
 </div>
 
 
-<div class="container pt-5" *ngIf=hide>
+<div class="container pt-5" *ngIf="hide" #mySection>
     <div class="col pt-5">
         <div class="card">
             <div class="card-body">
+                <div class="form-group">
+                    <label for="title" class="form-label">Scheme Title :</label>
+                    <input type="text" class="form-control" id="query" [(ngModel)]="model.schemetitle" disabled="true">
+                </div>
                 <div class="form-group">
                     <label for="name" class="form-label">Post Your Query :</label>
                     <textarea class="form-control" id="query" [(ngModel)]="model.query" placeholder="Enter You Query Here"></textarea>
