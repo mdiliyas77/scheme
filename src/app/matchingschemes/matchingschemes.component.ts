@@ -19,6 +19,7 @@ export class MatchingschemesComponent implements OnInit {
   flag: boolean = true;
   hide: boolean = false;
   show: boolean = false;
+  noscheme: boolean = true;
 
 
   @ViewChild('mySection')
@@ -32,7 +33,6 @@ export class MatchingschemesComponent implements OnInit {
   }
 
   GetMemberById() {
-    debugger;
     this.model.memberid = sessionStorage.getItem('userid');
     this.schemeservice.GetMemberbyId(this.model)
       .subscribe({
@@ -47,7 +47,12 @@ export class MatchingschemesComponent implements OnInit {
     this.schemeservice.GetMyScheme(this.model)
       .subscribe({
         next: (data) => {
+          debugger;
           this.myschemelist = data as any[];
+          if(this.myschemelist.length==null)
+          {
+            this.noscheme=true;
+          }
         }
       })
   }

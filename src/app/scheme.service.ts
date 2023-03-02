@@ -155,4 +155,9 @@ export class SchemeService {
   return this.http.post(baseurl+'/Download',data);
 }
 
+UploadFile(data:any):Observable<any>
+{
+  return this.http.post(baseurl+'/UploadFiles',data);
+}
+
 }

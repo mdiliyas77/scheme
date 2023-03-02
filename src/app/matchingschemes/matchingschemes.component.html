@@ -143,6 +143,10 @@
 </div>
 </div>
 
+<div class="container mt-5 text-center" *ngIf="noscheme" >
+    <h4 class="text-warning">No schemes available for you now, come back after some time....<a routerLink="memberschemes">check all schemes</a></h4>
+</div>
+
 
 <div class="container pt-5" *ngIf="hide" #mySection>
     <div class="col pt-5">

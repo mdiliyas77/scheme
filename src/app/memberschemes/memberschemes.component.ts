@@ -41,7 +41,7 @@ export class MemberschemesComponent implements OnInit {
     this.model = Object.assign({}, slist);
     setTimeout(() => {
       this.mySection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+    }, 50);
     
     
     

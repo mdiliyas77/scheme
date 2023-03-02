@@ -30,6 +30,7 @@ import { AllapplicationsComponent } from './allapplications/allapplications.comp
 import { ViewmyqueryComponent } from './viewmyquery/viewmyquery.component';
 import { AddcasteComponent } from './addcaste/addcaste.component';
 import { NgToastModule } from 'ng-angular-popup';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { NgToastModule } from 'ng-angular-popup';
     HttpClientModule,
     Ng2SearchPipeModule,
     NgToastModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

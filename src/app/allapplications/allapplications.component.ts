@@ -84,39 +84,10 @@ export class AllapplicationsComponent implements OnInit {
   }
 
 
-  DownloadImage(list: Scheme) {
+  DownloadDocs(list: Scheme) {
     debugger;
     this.model = Object.assign({}, list)
     this.model.filetype="image";
-
-    this.service.DownloadFile(this.model)
-      .subscribe({
-        next: (data) => {
-          this.model.id = null;
-          const byteCharacters = atob(data.base64String);
-          const byteNumbers = new Array(byteCharacters.length);
-          for (let i = 0; i < byteCharacters.length; i++) {
-            byteNumbers[i] = byteCharacters.charCodeAt(i);
-          }
-          const byteArray = new Uint8Array(byteNumbers);
-          const blob = new Blob([byteArray], { type: 'image/jpeg/png/application/pdf' });
-          const url = window.URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = data.name;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          // Release the object URL to free up memory.
-          window.URL.revokeObjectURL(url);
-        }
-      });
-  }
-
-  DownloadAadhaar(list: Scheme) {
- debugger;
-    this.model = Object.assign({}, list)
-    this.model.filetype="aadhaar";
 
     this.service.DownloadFile(this.model)
       .subscribe({
