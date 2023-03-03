@@ -30,9 +30,13 @@
             </table>
         </div>
     </div>
-    <div class="col my-5" *ngIf="hide">
+    <div class="col my-5" *ngIf="hide" #mySection>
         <div class="card">
         <div class="card-body">
+            <div class="form-group">
+                <label for="queryid" class="form-label">Query ID</label>
+                <input type="text" class="form-control" id="query" [(ngModel)]="model.queryid" disabled="true">
+              </div>
         <div class="form-group">
           <label for="query" class="form-label">Enter Your Reply Here</label>
           <input type="text" class="form-control" id="query" [(ngModel)]="model.reply" placeholder="Reply Here">

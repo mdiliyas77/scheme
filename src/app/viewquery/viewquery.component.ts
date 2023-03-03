@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Scheme } from '../scheme';
 import { SchemeService } from '../scheme.service';
 
@@ -9,6 +9,9 @@ import { SchemeService } from '../scheme.service';
 })
 export class ViewqueryComponent implements OnInit {
 
+  @ViewChild('mySection')
+  mySection!: ElementRef;
+  
   querylist: any = {};
   model: any = {};
   statusmsg: string = "";
@@ -25,6 +28,9 @@ export class ViewqueryComponent implements OnInit {
     debugger;
     this.model = Object.assign({}, qlist);
     this.hide = !this.hide;
+    setTimeout(() => {
+      this.mySection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   }
 
   GReply() {
