@@ -1,40 +1,43 @@
 <div class="container-fluid mt-5 full">
     <div class="row">
         <div class="col">
-        <div class="card">
-        <div class="card-header bg-secondary text-white">
-            Yor Applications
-        </div>
-        <div class="col">
-            <div class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Application ID</th>
-                        <th scope="col">Member ID</th>
-                        <th scope="col">Applicant Name</th>
-                        <th scope="col">Scheme ID</th>
-                        <th scope="col">Scheme Title</th>
-                        <th scope="col">Application Status</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let list of applist">
-                        <td>{{list.applicationid}}</td>
-                        <td>{{list.memberid}}</td>
-                        <td>{{list.name}}</td>
-                        <td>{{list.schemeid}}</td>
-                        <td>{{list.schemetitle}}</td>
-                        <td>{{list.appstatus}}</td>
-                        <td><small class="help-block text-muted">Upload reqired documents in one zip file*</small><input type="file" #fileInput id="file" (change)="getFile($event)"><button class="mt-1 btn btn-secondary" (click)="UploadFile(list)">Upload File</button></td>
-                        <td><a class="btn btn-primary" (click)="Delete(list)">Delete</a> </td>
-                    </tr>
-                </tbody>
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    Yor Applications
+                </div>
+                <div class="col">
+                    <div class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Application ID</th>
+                                <th scope="col">Member ID</th>
+                                <th scope="col">Applicant Name</th>
+                                <th scope="col">Scheme ID</th>
+                                <th scope="col">Scheme Title</th>
+                                <th scope="col">Application Status</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of applist">
+                                <td>{{list.applicationid}}</td>
+                                <td>{{list.memberid}}</td>
+                                <td>{{list.name}}</td>
+                                <td>{{list.schemeid}}</td>
+                                <td>{{list.schemetitle}}</td>
+                                <td>{{list.appstatus}}</td>
+                                <td><small class="help-block text-muted">Upload reqired documents in one zip
+                                        file*</small><input type="file" #fileInput id="file"
+                                        (change)="getFile($event)"><button class="mt-1 btn btn-secondary"
+                                        (click)="UploadFile(list)">Upload File</button></td>
+                                <td><a class="btn btn-primary" (click)="Delete(list)">Delete</a> </td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
     </div>
 </div>

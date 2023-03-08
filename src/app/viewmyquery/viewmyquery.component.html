@@ -3,29 +3,29 @@
         <div class="card-header">
             <h5>Your Queries</h5>
         </div>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Query ID</th>
-            <th scope="col">Scheme ID</th>
-            <th scope="col">Scheme Title</th>
-            <th scope="col">Member Name</th>
-            <th scope="col">Query</th>
-            <th scope="col">Reply</th>
-            <th scope="col"></th>
-        </tr>
-    </thead> 
-    <tbody>
-        <tr *ngFor="let qlist of myquerylist">
-            <td>{{qlist.queryid}}</td>
-            <td>{{qlist.schemeid}}</td>
-            <td>{{qlist.schemetitle}}</td>
-            <td>{{qlist.name}}</td>
-            <td><textarea class="form-control" readonly>{{qlist.query}}</textarea></td>
-            <td><textarea class="form-control" readonly>{{qlist.reply}}</textarea></td>
-            <td><a class="btn btn-primary" (click)="Delete(qlist)">Delete</a> </td>
-        </tr>
-    </tbody>
-</table>
-</div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Query ID</th>
+                    <th scope="col">Scheme ID</th>
+                    <th scope="col">Scheme Title</th>
+                    <th scope="col">Member Name</th>
+                    <th scope="col">Query</th>
+                    <th scope="col">Reply</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let qlist of myquerylist">
+                    <td>{{qlist.queryid}}</td>
+                    <td>{{qlist.schemeid}}</td>
+                    <td>{{qlist.schemetitle}}</td>
+                    <td>{{qlist.name}}</td>
+                    <td><textarea class="form-control" readonly>{{qlist.query}}</textarea></td>
+                    <td><textarea class="form-control" readonly>{{qlist.reply}}</textarea></td>
+                    <td><a class="btn btn-primary" (click)="Delete(qlist)">Delete</a> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

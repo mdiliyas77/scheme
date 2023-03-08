@@ -19,7 +19,7 @@ export class MatchingschemesComponent implements OnInit {
   flag: boolean = true;
   hide: boolean = false;
   show: boolean = false;
-  noscheme: boolean = true;
+  noscheme: boolean = false;
 
 
   @ViewChild('mySection')
@@ -49,7 +49,7 @@ export class MatchingschemesComponent implements OnInit {
         next: (data) => {
           debugger;
           this.myschemelist = data as any[];
-          if(this.myschemelist.length==null)
+          if(this.myschemelist.length==0)
           {
             this.noscheme=true;
           }
